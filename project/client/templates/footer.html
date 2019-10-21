@@ -1,11 +1,65 @@
-<footer>
-  <nav class="navbar fixed-bottom navbar-light bg-light">
-    <div class="container">
-      <small>
-        <span>©
-          <a href="http://mherman.org">Michael Herman</a>
-        </span>
-      </small>
-    </div>
-  </nav>
-</footer>
+    <footer class="footer">
+      <div>
+        <div class="container text-muted">                                                                                               
+          <div class="">
+            <div class="row">
+             <div class="col-sm-3">
+                <dl>
+                  {% include 'contact_us.html' %}
+                </dl>
+              </div>
+              <div class="col-sm-3">
+                <dl>
+                  <dt><h3>Fedora Project</h3></dt>
+                  <dd>
+                    <ul>
+                      <li> <a href="https://fedoraproject.org/wiki/Legal/TrademarkGuidelines">Trademark Guidelines</a> </li>
+                      <li> <a href="https://github.com/fedora-infra/fedora-packages">Sources</a> </li>
+                      <li> <a href="https://src.fedoraproject.org">Fedora Packages SRPMs</a> </li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-sm-3">
+                <dl>
+                  <dt><h3>Site Navigation</h3></dt>
+                  <dd>
+                    <ul>
+                      <li> <a href="url_for('coprs_ns.coprs_show')">Home</a> </li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-sm-3">
+                <dl>
+                  <dt><h3>Powered by</h3></dt>
+                  <dd>
+                    <ul>
+                      <li><a href="https://www.python.org">Python</a></li>
+                      <li><a href="https://www.patternfly.org">PatternFly</a></li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- FEDORA MENU -->
+  {% if fedmenu_url is defined %}
+  <script src="{{fedmenu_url}}/js/fedora-libravatar.js"></script>
+  <script src="{{fedmenu_url}}/js/fedmenu.js"></script>
+  <script>
+    fedmenu({
+        'url': '{{fedmenu_data_url}}',
+        'mimeType': 'application/javascript',
+        'position': 'bottom-right',
+    });
+  </script>
+  {% endif %}
+
+  {% block footer %}{% endblock %}
+
+

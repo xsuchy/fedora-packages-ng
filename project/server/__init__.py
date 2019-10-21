@@ -3,7 +3,7 @@
 
 import os
 
-from flask import Flask, render_template
+import flask
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -20,7 +20,7 @@ migrate = Migrate()
 def create_app(script_info=None):
 
     # instantiate the app
-    app = Flask(
+    app = flask.Flask(
         __name__,
         template_folder="../client/templates",
         static_folder="../client/static",
@@ -46,23 +46,36 @@ def create_app(script_info=None):
     # error handlers
     @app.errorhandler(401)
     def unauthorized_page(error):
-        return render_template("errors/401.html"), 401
+        return flask.render_template("errors/401.html"), 401
 
     @app.errorhandler(403)
     def forbidden_page(error):
-        return render_template("errors/403.html"), 403
+        return flask.render_template("errors/403.html"), 403
 
     @app.errorhandler(404)
     def page_not_found(error):
-        return render_template("errors/404.html"), 404
+        return flask.render_template("errors/404.html"), 404
 
     @app.errorhandler(500)
     def server_error_page(error):
-        return render_template("errors/500.html"), 500
+        return flask.render_template("errors/500.html"), 500
 
     # shell context for flask cli
     @app.shell_context_processor
     def ctx():
         return {"app": app, "db": db}
 
+    # Serve static files from system-wide RPM files
+    @app.route('/system_static/<component>/<path:filename>')
+    @app.route('/system_static/<path:filename>')
+    def system_static(filename, component=""):
+        """
+        :param component: name of the javascript component provided by a RPM package
+                          do not confuse with a name of the RPM package itself
+                          (e.g. 'jquery' component is provided by 'js-jquery1' package)
+        :param filename: path to a file relative to the component root directory
+        :return: content of a static file
+        """
+        path = os.path.join("/usr/share/javascript", component)
+        return flask.send_from_directory(path, filename)
     return app
