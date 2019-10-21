@@ -11,7 +11,7 @@ Create and activate a virtual environment, and then install the requirements.
 Update *project/server/config.py*, and then run:
 
 ```sh
-$ export APP_NAME="fedora-packages-ng"
+$ export APP_NAME="fedora-packages"
 $ export APP_SETTINGS="project.server.config.ProductionConfig"
 $ export FLASK_DEBUG=0
 ```
@@ -24,7 +24,7 @@ $ export APP_SETTINGS="project.server.config.DevelopmentConfig"
 Using [Pipenv](https://docs.pipenv.org/) or [python-dotenv](https://github.com/theskumar/python-dotenv)? Use the *.env* file to set environment variables:
 
 ```
-APP_NAME="fedora-packages-ng"
+APP_NAME="fedora-packages"
 APP_SETTINGS="project.server.config.DevelopmentConfig"
 FLASK_DEBUG=1
 ```

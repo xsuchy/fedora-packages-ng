@@ -8,7 +8,6 @@ import coverage
 from flask.cli import FlaskGroup
 
 from project.server import create_app, db
-from project.server.models import User
 import subprocess
 import sys
 
@@ -39,13 +38,6 @@ def create_db():
 def drop_db():
     """Drops the db tables."""
     db.drop_all()
-
-
-@cli.command()
-def create_admin():
-    """Creates the admin user."""
-    db.session.add(User(email="ad@min.com", password="admin", admin=True))
-    db.session.commit()
 
 
 @cli.command()

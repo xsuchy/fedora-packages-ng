@@ -1,4 +1,4 @@
-# fedora-packages-ng
+# fedora-packages
 
 ## Quick Start
 
