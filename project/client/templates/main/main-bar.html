@@ -1,0 +1,33 @@
+  <!-- MAIN MENU -->
+  <nav class="" id="main-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-7 col-xs-6">
+          <a href="{{ url_for('main.home') }}">
+            <img id="logo" src="{{ url_for('static', filename='fedora_packages_logo_white.png') }}" alt="Fedora Packages Search">
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-6">
+          <div id="login-menu" class="text-right">
+
+          </div>
+          <form role="search" method="get" action="{{ url_for('main.packages') }}">
+            <div class="input-group menu-search">
+              <input name="fulltext" type="text" class="form-control" placeholder="Search for packages" value="{% block search_box %}{%endblock%}">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb-panel">
+    <div class="container">
+        {% block breadcrumbs %}
+        {% endblock %}
+    </div>
+  </div>
