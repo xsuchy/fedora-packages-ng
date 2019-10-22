@@ -1,0 +1,19 @@
+dist: xenial
+language: bash
+services: docker
+matrix:
+  include:
+    # Run multi arch cases on only cron mode at first, as it takes 30+ minutes.
+    - name: Lint
+      script: docker-compose run web flake8 project
+    - name: Test without coverage
+      script: docker-compose run web python manage.py test
+    - name: Test with coverage
+      script: docker-compose run web python manage.py cov
+  allow_failures:
+  fast_finish: true
+branches:
+  only:
+    - master
+    # Enable "pull/*" branches to run Travis CI on forked repository.
+    - /^pull\//

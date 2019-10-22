@@ -1,5 +1,7 @@
 # fedora-packages
 
+[![Build Status](https://travis-ci.org/xsuchy/fedora-packages-ng.svg?branch=master)](https://travis-ci.org/xsuchy/fedora-packages-ng)
+
 ## Quick Start
 
 Install Cookiecutter globally:
