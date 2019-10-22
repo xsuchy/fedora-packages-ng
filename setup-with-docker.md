@@ -22,11 +22,11 @@ APP_SETTINGS="project.server.config.DevelopmentConfig"
 Create the database:
 -
 ```sh
-$ docker-compose run web python manage.py create-db
-$ docker-compose run web python manage.py db init
-$ docker-compose run web python manage.py db migrate
-$ docker-compose run web python manage.py create-admin
-$ docker-compose run web python manage.py create-data
+$ docker-compose run web python3 manage.py create-db
+$ docker-compose run web python3 manage.py db init
+$ docker-compose run web python3 manage.py db migrate
+$ docker-compose run web python3 manage.py create-admin
+$ docker-compose run web python3 manage.py create-data
 ```
 
 Access the application at the address [http://localhost:5002/](http://localhost:5002/)
@@ -36,13 +36,13 @@ Access the application at the address [http://localhost:5002/](http://localhost:
 Test without coverage:
 
 ```sh
-$ docker-compose run web python manage.py test
+$ docker-compose run web python3 manage.py test
 ```
 
 Test with coverage:
 
 ```sh
-$ docker-compose run web python manage.py cov
+$ docker-compose run web python3 manage.py cov
 ```
 
 Lint:

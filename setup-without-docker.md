@@ -32,18 +32,18 @@ FLASK_DEBUG=1
 ### Create DB
 
 ```sh
-$ python manage.py create-db
-$ python manage.py db init
-$ python manage.py db migrate
-$ python manage.py create-admin
-$ python manage.py create-data
+$ python3 manage.py create-db
+$ python3 manage.py db init
+$ python3 manage.py db migrate
+$ python3 manage.py create-admin
+$ python3 manage.py create-data
 ```
 
 ### Run the Application
 
 
 ```sh
-$ python manage.py run
+$ python3 manage.py run
 ```
 
 Access the application at the address [http://localhost:5000/](http://localhost:5000/)
@@ -53,19 +53,19 @@ Access the application at the address [http://localhost:5000/](http://localhost:
 Without coverage:
 
 ```sh
-$ python manage.py test
+$ python3 manage.py test
 ```
 
 With coverage:
 
 ```sh
-$ python manage.py cov
+$ python3 manage.py cov
 ```
 
 Run flake8 on the app:
 
 ```sh
-$ python manage.py flake
+$ python3 manage.py flake
 ```
 
 or
