@@ -1,3 +1,7 @@
-*/__pycache__/*
 *.pyc
 *.swp
+*/__pycache__/*
+*~
+/.venv
+/Pipfile.lock
+/htmlcov
