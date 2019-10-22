@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>{% block title %}Fedora Packages Search{% endblock %}</title>
   <script src="/system_static/jquery/1/jquery.min.js"></script>
   <script src="/system_static/jquery_ui/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://apps.fedoraproject.org/global/fedora-bootstrap-1.0.2/fedora-bootstrap.css" media="all" />
   <link rel="stylesheet" href="/system_static/jquery_ui/jquery-ui.min.css" />
   <link href="/system_static/patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
   <link rel="stylesheet" href="/system_static/patternfly/css/patternfly-additions.min.css">
@@ -49,13 +51,12 @@
           <p class="error"><strong>Error:</strong> {{ error }}</p>
         {% endif %}
 
-         <!-- child template -->
-        {% block content %}{% endblock %}
-
 
 
 
   </div>
+  <!-- child template -->
+  {% block content %}{% endblock %}
   {% include 'footer.html' %}
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

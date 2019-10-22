@@ -1,28 +1,45 @@
+<div class="container">
 <div id="searchbar" class="masthead py-3">
            <div class="container">
 		<div class="grid_2">
 		&nbsp;
 		</div>
-               <script type="text/javascript">
-                   function do_search(form) {
-                       var value = encodeURIComponent(encodeURIComponent(form.search['value']));
-                       window.history.pushState({search: value}, '',
-                                                form.action + '/' + value);
-                       update_search_grid(value);
-                       return False;
-                   }
                </script>
-               <form action="/packages/s"
-                      onSubmit="return do_search(this);">
-                      <div class="input-group">
-                        <input class ="form-control form-control-lg" type="text" name="search"
-                               autofocus="autofocus"
-                               value="rpmconf" />
-                         <span class="input-group-btn">
-                           <input type="submit" value="Search" class="btn btn-primary btn-lg" />
-                         </span>
-                     </div>
-               </form>
+<form role="form" class="search-pf has-button" action="/packages/s">
+  <div class="form-group has-clear">
+    <div class="search-pf-input-group">
+      <label for="search1" class="sr-only">Search</label>
+      <input id="search1" type="search" class="form-control" placeholder="Search">
+      <button type="button" class="clear" aria-hidden="true"><span class="pficon pficon-close"></span></button>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default" type="button">Search</button>
+  </div>
+</form>
+<script>
+  (function($) {
+    $(document).ready(function() {
+      // Hide the clear button if the search input is empty
+      $(".search-pf .has-clear .clear").each(function() {
+        if (!$(this).prev('.form-control').val()) {
+          $(this).hide();
+        }
+      });
+      // Show the clear button upon entering text in the search input
+      $(".search-pf .has-clear .form-control").keyup(function () {
+        var t = $(this);
+        t.next('button').toggle(Boolean(t.val()));
+      });
+      // Upon clicking the clear button, empty the entered text and hide the clear button
+      $(".search-pf .has-clear .clear").click(function () {
+        $(this).prev('.form-control').val('').focus();
+        $(this).hide();
+      });
+    });
+  })(jQuery);
+</script>
                <div class="clear"></div>
            </div>
        </div>
+</div>
