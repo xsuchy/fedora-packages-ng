@@ -29,6 +29,10 @@ APP_SETTINGS="project.server.config.DevelopmentConfig"
 FLASK_DEBUG=1
 ```
 
+### Install dependencies
+
+See [Dockerfile](./Dockerfile) - Required dependencies part to install the nesssary RPMs.
+
 ### Create DB
 
 ```sh
