@@ -4,22 +4,21 @@ services: docker
 matrix:
   include:
     # Run multi arch cases on only cron mode at first, as it takes 30+ minutes.
-    - name: Setup with docker - Lint
-      script: docker-compose run web flake8 project
-    - name: Setup with docker - Test without coverage
-      script: docker-compose run web python manage.py test
-    - name: Setup with docker - Test with coverage
-      script: docker-compose run web python manage.py cov
+    - name: Setup with docker
+      script:
+        - docker-compose run web python3 manage.py flake
+        - docker-compose run web python3 manage.py test
+        - docker-compose run web python3 manage.py cov
     - name: Setup without docker
       language: python
-      python: "3.6"
+      python: "3.7"
       install:
-        - pip install pipenv
+        - pip3 install pipenv
         - pipenv install --dev
       script:
-        - pipenv run python manage.py flake
-        - pipenv run python manage.py test
-        - pipenv run python manage.py cov
+        - pipenv run python3 manage.py flake
+        - pipenv run python3 manage.py test
+        - pipenv run python3 manage.py cov
   allow_failures:
   fast_finish: true
 branches:

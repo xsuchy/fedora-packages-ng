@@ -48,5 +48,5 @@ $ docker-compose run web python3 manage.py cov
 Lint:
 
 ```sh
-$ docker-compose run web flake8 project
+$ docker-compose run web python3 manage.py flake
 ```
