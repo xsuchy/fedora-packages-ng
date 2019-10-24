@@ -18,4 +18,9 @@ def packages(package_name=None):
     if not package_name:
         return home()
     else:
-        return render_template("main/packages.html")
+        return render_template("main/package-overview.html", package_name=package_name)
+
+@main_blueprint.route("/packages/<package_name>/builds")
+def package_builds(package_name):
+    return render_template("main/package-builds.html", package_name=package_name)
+
