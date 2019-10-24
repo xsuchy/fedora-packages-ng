@@ -18,33 +18,40 @@ def packages(package_name=None):
     if not package_name:
         return home()
     else:
-        return render_template("main/package-overview.html", package_name=package_name)
+        return render_template("main/package-overview.html",
+                               package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/builds")
 def package_builds(package_name):
-    return render_template("main/package-builds.html", package_name=package_name)
+    return render_template("main/package-builds.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/updates")
 def package_updates(package_name):
-    return render_template("main/package-updates.html", package_name=package_name)
+    return render_template("main/package-updates.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/bugs")
 def package_bugs(package_name):
-    return render_template("main/package-bugs.html", package_name=package_name)
+    return render_template("main/package-bugs.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/problems")
 def package_problems(package_name):
-    return render_template("main/package-problems.html", package_name=package_name)
+    return render_template("main/package-problems.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/contents")
 def package_contents(package_name):
-    return render_template("main/package-contents.html", package_name=package_name)
+    return render_template("main/package-contents.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/changelog")
 def package_changelog(package_name):
-    return render_template("main/package-changelog.html", package_name=package_name)
+    return render_template("main/package-changelog.html",
+                           package_name=package_name)
 
 @main_blueprint.route("/packages/<package_name>/sources")
 def package_sources(package_name):
-    return render_template("main/package-sources.html", package_name=package_name)
-
+    return render_template("main/package-sources.html",
+                           package_name=package_name)
