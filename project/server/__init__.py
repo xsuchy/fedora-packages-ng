@@ -7,13 +7,13 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import humanize
-import jinja2
 
 # instantiate the extensions
 toolbar = DebugToolbarExtension()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
+
 
 def create_app(script_info=None):
 
@@ -94,8 +94,8 @@ def create_app(script_info=None):
         diff = now - datetime.datetime.fromtimestamp(time_in)
         return humanize.naturaldelta(diff)
 
-
+# continuation of block of create_app()
     return app
-#### END of create_app()
+# END of create_app()
 
 app = create_app()

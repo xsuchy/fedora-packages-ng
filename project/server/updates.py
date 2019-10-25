@@ -1,17 +1,18 @@
 import bodhi.client.bindings
 import datetime
 
+
 def _get_age(date):
     if date:
         return datetime.datetime.fromisoformat(date).timestamp()
     else:
         return None
 
+
 def get_updates(package_name):
     bodhi_client = bodhi.client.bindings.BodhiClient()
-    #import pdb; pdb.set_trace()
-    #releases = bodhi_client.get_releases().releases
-    #releases = [v for v in releases if v.state != "archived"]
+    # releases = bodhi_client.get_releases().releases
+    # releases = [v for v in releases if v.state != "archived"]
     updates = []
     fetched_updates = bodhi_client.query(packages=package_name)
     for fu in fetched_updates.updates:
@@ -23,7 +24,7 @@ def get_updates(package_name):
                         'karma': fu.karma,
                         'updateid': fu.updateid,
                         'request': fu.request,
-                       })
+                       }
+                      )
     return updates
 
-#print(get_updates('mock'))
