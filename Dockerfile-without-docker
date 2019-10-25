@@ -1,0 +1,33 @@
+FROM fedora:30
+
+WORKDIR /work
+COPY . .
+
+# Disable modular repositories to save a running time of "dnf upgrade"
+# if they exists.
+RUN ls -1 /etc/yum.repos.d/*.repo
+RUN sed -i '/^enabled=1$/ s/1/0/' /etc/yum.repos.d/*-modular.repo || true
+
+RUN dnf -y upgrade \
+  && dnf -y install \
+  --setopt=tsflags=nodocs \
+  # Required dependencies
+  # Install minimal RPMs to pass the tests for a case without docker.
+  # We use Pipfile as much as possible to install pip packages.
+  gcc \
+  # For pg_config command required to install dependencies in
+  # requirements.txt.
+  libpq-devel \
+  python3 \
+  python3-devel \
+  # Install the RPM here as "pip3 install bodhi-client" fails.
+  python3-bodhi \
+  python3-bodhi-client \
+  # pipenv needs "which" to find find Python installations properly.
+  which \
+  && dnf clean all
+RUN python3 --version
+RUN python3 -m ensurepip \
+  && python3 -m pip install --upgrade pip setuptools pipenv
+# pipenv needs LANG to be set.
+ENV LANG C

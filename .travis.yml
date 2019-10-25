@@ -3,22 +3,27 @@ language: bash
 services: docker
 matrix:
   include:
-    # Run multi arch cases on only cron mode at first, as it takes 30+ minutes.
-    - name: Setup with docker
+    - name: Setup with docker - docker-compose
       script:
         - docker-compose run web python3 manage.py flake
         - docker-compose run web python3 manage.py test
         - docker-compose run web python3 manage.py cov
-    - name: Setup without docker
-      language: python
-      python: "3.7"
+    # We need to use Fedora container,
+    # to test the use case "Setup without docker" on Fedora.
+    - name: Setup without docker - pipenv
       install:
-        - pip3 install pipenv
-        - pipenv install --dev
+        - docker build --rm -t fedora-packages -f Dockerfile-without-docker .
       script:
-        - pipenv run python3 manage.py flake
-        - pipenv run python3 manage.py test
-        - pipenv run python3 manage.py cov
+        - |
+          docker run --rm -t fedora-packages bash -cx "
+            command -v python3 \
+              && command -v pipenv \
+              && pipenv --support \
+              && pipenv install --dev \
+              && pipenv run python3 manage.py flake \
+              && pipenv run python3 manage.py test \
+              && pipenv run python3 manage.py cov \
+          "
   allow_failures:
   fast_finish: true
 branches:
