@@ -9,7 +9,6 @@ class BaseConfig(object):
     """Base configuration."""
 
     APP_NAME = os.getenv("APP_NAME", "fedora-packages")
-    BCRYPT_LOG_ROUNDS = 4
     DEBUG_TB_ENABLED = False
     SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -38,7 +37,6 @@ class TestingConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     """Production configuration."""
 
-    BCRYPT_LOG_ROUNDS = 13
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL",
         "sqlite:///{0}".format(os.path.join(basedir, "prod.db")),

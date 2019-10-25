@@ -1,6 +1,4 @@
-# project/server/__init__.py
-
-
+import datetime
 import os
 
 import flask
@@ -8,14 +6,14 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+import humanize
+import jinja2
 
 # instantiate the extensions
 toolbar = DebugToolbarExtension()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
-
 
 def create_app(script_info=None):
 
@@ -80,4 +78,24 @@ def create_app(script_info=None):
         """
         path = os.path.join("/usr/share/javascript", component)
         return flask.send_from_directory(path, filename)
+
+    @app.template_filter('time_ago')
+    def time_ago(time_in, until=None):
+        """ returns string saying how long ago the time on input was
+
+        Input is in EPOCH (seconds since epoch).
+        """
+        if time_in is None:
+            return " - "
+        if until is not None:
+            now = datetime.datetime.fromtimestamp(until)
+        else:
+            now = datetime.datetime.now()
+        diff = now - datetime.datetime.fromtimestamp(time_in)
+        return humanize.naturaldelta(diff)
+
+
     return app
+#### END of create_app()
+
+app = create_app()

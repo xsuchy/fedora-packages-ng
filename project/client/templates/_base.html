@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Fedora Packages Search{% endblock %}</title>
-  <script src="/system_static/jquery/1/jquery.min.js"></script>
-  <script src="/system_static/jquery_ui/jquery-ui.min.js"></script>
+  <script src="{{ url_for('system_static', component='jquery', filename='1/jquery.min.js') }}"></script>
+  <script src="{{ url_for('system_static', component='jquery_ui', filename='jquery-ui.min.js') }}"></script>
   <link rel="stylesheet" type="text/css" href="https://apps.fedoraproject.org/global/fedora-bootstrap-1.0.2/fedora-bootstrap.css" media="all" />
-  <link rel="stylesheet" href="/system_static/jquery_ui/jquery-ui.min.css" />
-  <link href="/system_static/patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
-  <link rel="stylesheet" href="/system_static/patternfly/css/patternfly-additions.min.css">
-  <link href="/static/custom-styles.css" rel="stylesheet" media="screen, print">
+  <link rel="stylesheet" href="{{ url_for('system_static', component='jquery_ui', filename='jquery-ui.min.css') }}" />
+  <link href="{{ url_for('system_static', component='patternfly', filename='css/patternfly.min.css') }}" rel="stylesheet" media="screen, print">
+  <link rel="stylesheet" href="{{ url_for('system_static', component='patternfly', filename='css/patternfly-additions.min.css') }}">
+  <link href="{{ url_for('static', filename='custom-styles.css') }}" rel="stylesheet" media="screen, print">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="/system_static/html5shiv.min.js"></script>
@@ -17,12 +17,12 @@
   <![endif]-->
   <!-- IE8 requires jQuery and Bootstrap JS to load in head to prevent rendering bugs -->
   <!-- IE8 requires jQuery v1.x -->
-  <script src="/system_static/jquery/1/jquery.min.js"></script>
-  <script src="/system_static/bootstrap_scss/js/bootstrap.min.js"></script>
-  <script src="/system_static/datatables/js/jquery.dataTables.min.js"></script>
-  <script src="/system_static/patternfly/js/patternfly.min.js"></script>
-  <link rel=stylesheet type=text/css href="/static/fedora.css">
-   <link rel=stylesheet type=text/css href="/static/style-overwrite.css">
+  <script src="{{ url_for('system_static', component='jquery', filename='1/jquery.min.js') }}"></script>
+  <script src="{{ url_for('system_static', component='bootstrap_scss', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('system_static', component='datatables', filename='js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ url_for('system_static', component='patternfly', filename='js/patternfly.min.js') }}"></script>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='fedora.css') }}">
+   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style-overwrite.css') }}">
 </head>
 <body>
 

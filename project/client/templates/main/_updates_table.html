@@ -1,0 +1,56 @@
+{% from "_helpers.html" import initialize_datatables %}
+
+{% macro updates_table(updates) %}
+{% if updates %}
+<noscript><p>WARNING!! This page is using JavaScript to filter and sort the table.
+          </p>
+</noscript>
+  <table class="datatable table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>Age</th>
+        <th>Status</th>
+        <th>Errata</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for update in updates %}
+      <tr >
+        <td data-order="{{ update.version }}">
+          {{ update.version }}
+        </td>
+        <td data-order="{{update.age}}">
+            {% if update.age %}
+               {{ update.age|time_ago() }} ago
+            {% else %}
+               &nbsp;
+            {% endif %}
+        </td>
+        <td>{{ update.status }}<br />{{ update.karma }} karma</td>
+        <td>
+            {% if update.status == "stable" %}
+              <a href="{{ update.link }}">{{ update.updateid }}</a><br/>
+              {% if update.date_pushed %}
+                Pushed on {{ update.date_pushed }}
+              {% else %}
+                In process...
+              {% endif %}
+            {% elif update.status == "pending" %}
+                <a href="{{ update.link }}">{{ update.updateid }}</a><br/>
+                Pending push to {{ update.request }}
+            {% elif update.status == "obsolete" %}
+                <a href="{{ update.link }}">{{ update.updateid }}</a><br/>
+                This update has been obsoleted.
+            {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+  <h3>No updates so far</h3>
+{% endif %}
+
+  {{ initialize_datatables() }}
+{% endmacro %}

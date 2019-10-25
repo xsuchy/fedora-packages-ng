@@ -1,12 +1,16 @@
 {% extends "main/packages.html" %}
+{% from "main/_updates_table.html" import updates_table with context %}
 {% set selected_tab = "updates" %}
 
 {% block body_content %}
-<div class="body-content">
-  <div>
-    <h1>Updates</h1>
-    <hr><br>
-    <p>Add some content here!</p>
+
+  {% if updates %}
+    {{ updates_table(updates) }}
+  {% else %}
+  <div class="blank-slate-pf">
+    <h1>
+      No updates are available for this package.
+    </h1>
   </div>
-</div>
+  {% endif %}
 {% endblock %}
