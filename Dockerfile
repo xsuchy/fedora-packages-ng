@@ -27,6 +27,8 @@ RUN dnf -y upgrade \
   # Development dependencies
   # For netcat (nc) command in entrypoint.sh.
   nmap-ncat \
+  # tests
+  python3-flake8 \
   && dnf clean all
 RUN python3 --version
 RUN python3 -m ensurepip \
