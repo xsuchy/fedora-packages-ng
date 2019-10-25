@@ -24,7 +24,5 @@ def get_updates(package_name):
                         'karma': fu.karma,
                         'updateid': fu.updateid,
                         'request': fu.request,
-                       }
-                      )
+                        })
     return updates
-

@@ -98,4 +98,5 @@ def create_app(script_info=None):
     return app
 # END of create_app()
 
+
 app = create_app()
