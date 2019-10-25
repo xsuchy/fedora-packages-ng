@@ -1,12 +1,12 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-bodhi-client = "*"
+# bodhi-client fails to be installed.
+# https://github.com/xsuchy/fedora-packages-ng/issues/5
+# bodhi-client = "*"
 flask = "*"
 flask-bootstrap = "*"
 flask-migrate = "*"
@@ -15,15 +15,11 @@ flask-wtf = "*"
 humanize = "*"
 psycopg2 = "*"
 
-
 [dev-packages]
-
 coverage = "*"
 flask-debugtoolbar = "*"
 flask-testing = "*"
 "flake8" = "*"
 
-
 [requires]
-
 python_version = "3.6"
