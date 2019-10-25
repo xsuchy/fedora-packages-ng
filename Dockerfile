@@ -15,6 +15,8 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-devel \
+  python3-humanize \
+  python3-bodhi-client \
   js-html5shiv \
   js-jquery1 \
   js-respond \
