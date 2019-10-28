@@ -20,6 +20,9 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-devel \
+  python3-pip \
+  python3-setuptools \
+  pipenv \
   # Install the RPM here as "pip3 install bodhi-client" fails.
   python3-bodhi \
   python3-bodhi-client \
@@ -27,7 +30,14 @@ RUN dnf -y upgrade \
   which \
   && dnf clean all
 RUN python3 --version
-RUN python3 -m ensurepip \
-  && python3 -m pip install --upgrade pip setuptools pipenv
+
+# Create a testing user.
+RUN useradd -m tester
+WORKDIR /work
+COPY . .
+RUN chown -R tester:tester /work
+
+# Prepare to test.
+USER tester
 # pipenv needs LANG to be set.
 ENV LANG C

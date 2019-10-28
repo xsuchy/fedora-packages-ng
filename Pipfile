@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 # bodhi-client fails to be installed.
 # https://github.com/xsuchy/fedora-packages-ng/issues/5
+# bodhi = "*"
 # bodhi-client = "*"
 flask = "*"
 flask-bootstrap = "*"
