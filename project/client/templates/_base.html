@@ -12,16 +12,17 @@
   <link href="{{ url_for('static', filename='custom-styles.css') }}" rel="stylesheet" media="screen, print">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="/system_static/html5shiv.min.js"></script>
-  <script src="/system_static/respond.min.js"></script>
+  <script src="{{ url_for('system_static', filename='html5shiv.min.js') }}"></script>
+  <script src="{{ url_for('system_static', filename='respond.min.js') }}"></script>
   <![endif]-->
   <!-- IE8 requires jQuery and Bootstrap JS to load in head to prevent rendering bugs -->
   <!-- IE8 requires jQuery v1.x -->
   <script src="{{ url_for('system_static', component='jquery', filename='1/jquery.min.js') }}"></script>
   <script src="{{ url_for('system_static', component='bootstrap_scss', filename='js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('system_static', component='datatables', filename='js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ url_for('system_static', component='datatables', filename='js/jquery.dataTables.js') }}"></script>
   <script src="{{ url_for('system_static', component='patternfly', filename='js/patternfly.min.js') }}"></script>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='fedora.css') }}">
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style-overwrite.css') }}">
 </head>
 <body>
