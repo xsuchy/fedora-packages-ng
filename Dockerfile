@@ -15,6 +15,8 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-devel \
+  python3-pip \
+  python3-setuptools \
   python3-flask-cache \
   python3-humanize \
   python3-bodhi-client \
@@ -33,8 +35,6 @@ RUN dnf -y upgrade \
   python3-flake8 \
   && dnf clean all
 RUN python3 --version
-RUN python3 -m ensurepip \
-  && python3 -m pip install --upgrade pip setuptools
 
 # set working directory
 RUN mkdir -p /usr/src/app
