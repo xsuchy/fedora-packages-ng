@@ -25,6 +25,7 @@ matrix:
               && pipenv run python3 manage.py cov \
           "
   allow_failures:
+    - name: Setup without docker - pipenv
   fast_finish: true
 branches:
   only:
