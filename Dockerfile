@@ -15,6 +15,7 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-devel \
+  python3-flask-cache \
   python3-humanize \
   python3-bodhi-client \
   python3-koji \

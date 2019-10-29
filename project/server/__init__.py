@@ -6,6 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cache import Cache
 import humanize
 
 # instantiate the extensions
@@ -99,4 +100,6 @@ def create_app(script_info=None):
 # END of create_app()
 
 
+cache = Cache(config={'CACHE_TYPE': 'simple'})
 app = create_app()
+cache.init_app(app)

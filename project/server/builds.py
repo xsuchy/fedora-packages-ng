@@ -22,5 +22,5 @@ def get_builds(package_name):
                        'completion': fb['completion_ts'],
                        'owner_name': fb['owner_name'],
                        'state': str(fb['state']),
-                      })
+                       })
     return builds

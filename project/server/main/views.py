@@ -5,6 +5,7 @@ from flask import render_template, Blueprint
 
 from ..updates import get_updates
 from ..builds import get_builds
+from ...server import cache
 
 main_blueprint = Blueprint("main", __name__)
 
@@ -24,6 +25,7 @@ def packages(package_name=None):
                                package_name=package_name)
 
 
+@cache.cached(timeout=120)
 @main_blueprint.route("/packages/<package_name>/builds")
 def package_builds(package_name):
     builds = get_builds(package_name)
@@ -31,6 +33,7 @@ def package_builds(package_name):
                            package_name=package_name, builds=builds)
 
 
+@cache.cached(timeout=120)
 @main_blueprint.route("/packages/<package_name>/updates")
 def package_updates(package_name):
     updates = get_updates(package_name)
