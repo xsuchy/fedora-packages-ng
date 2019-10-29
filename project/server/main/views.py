@@ -4,6 +4,7 @@
 from flask import render_template, Blueprint
 
 from ..updates import get_updates
+from ..builds import get_builds
 
 main_blueprint = Blueprint("main", __name__)
 
@@ -25,8 +26,9 @@ def packages(package_name=None):
 
 @main_blueprint.route("/packages/<package_name>/builds")
 def package_builds(package_name):
+    builds = get_builds(package_name)
     return render_template("main/package-builds.html",
-                           package_name=package_name)
+                           package_name=package_name, builds=builds)
 
 
 @main_blueprint.route("/packages/<package_name>/updates")

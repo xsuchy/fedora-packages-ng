@@ -17,6 +17,7 @@ RUN dnf -y upgrade \
   python3-devel \
   python3-humanize \
   python3-bodhi-client \
+  python3-koji \
   js-html5shiv \
   js-jquery1 \
   js-respond \

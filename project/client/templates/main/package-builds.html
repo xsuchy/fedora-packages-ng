@@ -1,12 +1,17 @@
 {% extends "main/packages.html" %}
+
+{% from "main/_builds_table.html" import builds_table with context %}
 {% set selected_tab = "builds" %}
 
 {% block body_content %}
-<div class="body-content">
-  <div>
-    <h1>Builds</h1>
-    <hr><br>
-    <p>Add some content here!</p>
+
+  {% if builds %}
+    {{ builds_table(builds) }}
+  {% else %}
+  <div class="blank-slate-pf">
+    <h1>
+      No builds are available for this package.
+    </h1>
   </div>
-</div>
+  {% endif %}
 {% endblock %}

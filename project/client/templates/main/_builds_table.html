@@ -1,0 +1,51 @@
+{% from "_helpers.html" import initialize_datatables %}
+
+{% macro builds_table(builds) %}
+{% if builds %}
+<noscript><p>WARNING!! This page is using JavaScript to filter and sort the table.
+          </p>
+</noscript>
+  <table class="datatable table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Age</th>
+        <th>Build Time</th>
+        <th>Built By</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for build in builds %}
+      <tr >
+        <td>
+          <img src="{{ url_for('static', filename='16_build_state_'+build.state+'.png') }}"></img>
+          <a href="https://koji.fedoraproject.org/koji/buildinfo?buildID={{ build.build_id }}">{{ build.nvr }}</a>
+        </td>
+        {% if not build.completion %}
+        <td data-order="0">
+          In progress...
+        </td>
+        <td data-order="0">
+          In progress...
+        </td>
+        {% else %}
+        <td data-order="{{build.completion}}">
+          {{ build.completion|time_ago() }} ago
+        </td>
+        <td data-order="{{build.completion-build.creation}}">
+          {{ build.creation|time_ago(build.completion) }}
+        </td>
+        {% endif %}
+        <td>
+          {{ build.owner_name }}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+  <h3>No builds so far</h3>
+{% endif %}
+
+  {{ initialize_datatables() }}
+{% endmacro %}
