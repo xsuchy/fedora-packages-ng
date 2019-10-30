@@ -1,6 +1,6 @@
 Name:           fedora-packages
-Version:        5.0.0
-Release:        0%{?dist}
+Version:        5.0.1
+Release:        1%{?dist}
 Summary:        Fedora packages search engine
 
 License:        AGPLv3
@@ -67,6 +67,9 @@ cp -a project manage.py %{buildroot}%{_datadir}/%{name}
 
 
 %changelog
+* Wed Oct 30 2019 Miroslav Suchý <msuchy@redhat.com> 5.0.1-1
+- migrated to python3 and Flask
+
 * Tue Jan 15 2019 Clement Verna <cverna@tutanota.com> - 4.2.0-2
 - Fix dependencies
 
