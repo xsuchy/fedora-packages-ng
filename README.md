@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/xsuchy/fedora-packages-ng.svg?branch=master)](https://travis-ci.org/xsuchy/fedora-packages-ng)
 
+Fedora Packages Next Generation version replacing [Fedora Packages](https://apps.fedoraproject.org/packages/) ([source](https://github.com/fedora-infra/fedora-packages)).
+
 ## Quick Start
 
 ```sh
