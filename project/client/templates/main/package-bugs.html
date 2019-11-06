@@ -1,12 +1,60 @@
 {% extends "main/packages.html" %}
+
+{% from "main/_bugs_table.html" import bugs_table with context %}
 {% set selected_tab = "bugs" %}
 
 {% block body_content %}
-<div class="body-content">
-  <div>
-    <h1>Bugs</h1>
-    <hr><br>
-    <p>Add some content here!</p>
+
+
+<div class="container-cards-pf">
+<div class="row row-cards-pf count-summary-dashboard">
+    <div class="dropdown ml-2 mb-2 card-pf col-xs-6 col-sm-3 col-md-3">
+      <button class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
+        File a new Bug
+      </button>
+      <div>
+      <p></p>
+      <p>
+        <a target="_blank" href="https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&component={{ package_name }}">against Fedora</a>
+      </p>
+      <p>
+        <a target="_blank" href="https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora EPEL&component={{ package_name }}">against EPEL</a>
+      </div>
+     </p>
+    </div>
+    <div class="count-box card ml-2 card-pf col-xs-6 col-sm-3 col-md-3">
+      <div class="card-block">
+       <h4 class="text-xs-center">Open Bugs</h4>
+       <div class="bugcount">
+       <a href="{{ open_bugs_url }}" target="_blank">
+         <span class="main-count-value">{{open_bugs}}</span>
+       </a>
+       </div>
+      </div>
+    </div>
+    <div class="count-box card ml-2 card-pf col-xs-6 col-sm-3 col-md-3">
+      <div class="card-block">
+       <h4 class="text-xs-center">Blocking Bugs</h4>
+       <div class="bugcount">
+         <a href="{{ blocker_bugs_url }}" target="_blank">
+         <span class="main-count-value">{{blocker_bugs}}</span>
+       </a>
+       </div>
+      </div>
+    </div>
+</div><!-- /row -->
+</div><!-- /container -->
+
+<div class="list header-list">
+  {% if bugs %}
+    {{ bugs_table(bugs) }}
+  {% else %}
+  <div class="blank-slate-pf">
+    <h1>
+      No bugs reported for this package. Yet.
+    </h1>
   </div>
+  {% endif %}
 </div>
+
 {% endblock %}

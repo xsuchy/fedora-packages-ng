@@ -80,6 +80,12 @@ def create_app(script_info=None):
         path = os.path.join("/usr/share/javascript", component)
         return flask.send_from_directory(path, filename)
 
+    # Serve static files from system-wide fonts from RPM files
+    @app.route('/fonts/<path:filename>')
+    def fonts(filename):
+        path = "/usr/share/javascript/patternfly/fonts/"
+        return flask.send_from_directory(path, filename)
+
     @app.template_filter('time_ago')
     def time_ago(time_in, until=None):
         """ returns string saying how long ago the time on input was

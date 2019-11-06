@@ -47,4 +47,9 @@ input.short-input-field {
 	border-left: 1px #d1d1d1 solid;
 	border-right: 1px #d1d1d1 solid;
 	border-bottom: 1px #d1d1d1 solid;
-} 
+}
+
+.bugcount{
+  font-size: 4em;
+  text-align: center;
+}

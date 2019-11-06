@@ -1,0 +1,40 @@
+{% from "_helpers.html" import initialize_datatables %}
+
+{% macro bugs_table(bugs) %}
+{% if bugs %}
+<noscript><p>WARNING!! This page is using JavaScript to filter and sort the table.
+          </p>
+</noscript>
+  <table class="datatable table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Bug</th>
+        <th>Status</th>
+        <th>Summary</th>
+        <th>Release</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for bug in bugs %}
+      <tr >
+        <td>{{ bug.id }}
+        </td>
+        <td data-order="{{bug.status_sort}}">
+          {{ bug.status }}
+        </td>
+        <td>
+          {{ bug.summary }}
+        </td>
+        <td data-order="{{bug.version_sort}}">
+          {{ bug.release }}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+  <h3>No bugs so far</h3>
+{% endif %}
+
+  {{ initialize_datatables() }}
+{% endmacro %}

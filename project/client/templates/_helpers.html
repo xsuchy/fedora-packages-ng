@@ -1,9 +1,9 @@
-{% macro initialize_datatables(order="desc") %}
+{% macro initialize_datatables(order="desc", column=0) %}
   <script>
   // Initialize Datatables
   $(document).ready(function() {
     $('.datatable').dataTable({
-      "order": [[ 0, '{{ order }}' ]],
+      "order": [[ {{column}}, '{{ order }}' ]],
       "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, 'All']],
       dom:
         "<'dataTables_header'<'dataTables_filter'f><'dataTables_info'i>>" +
