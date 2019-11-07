@@ -17,7 +17,7 @@
     <tbody>
     {% for bug in bugs %}
       <tr >
-        <td>{{ bug.id }}
+        <td><a href="https://bugzilla.redhat.com/show_bug.cgi?id={{ bug.id }}">{{ bug.id }}</a>
         </td>
         <td data-order="{{bug.status_sort}}">
           {{ bug.status }}
