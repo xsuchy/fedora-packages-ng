@@ -41,6 +41,7 @@ def package_updates(package_name):
     return render_template("main/package-updates.html",
                            package_name=package_name, updates=updates)
 
+
 @cache.cached(timeout=600)
 @main_blueprint.route("/packages/<package_name>/bugs")
 def package_bugs(package_name):
