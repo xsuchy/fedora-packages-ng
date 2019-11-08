@@ -1,12 +1,17 @@
 {% extends "main/packages.html" %}
+
+{% from "main/_changelogs_table.html" import changelogs_table with context %}
 {% set selected_tab = "changelog" %}
 
 {% block body_content %}
-<div class="body-content">
-  <div>
-    <h1>Changelog</h1>
-    <hr><br>
-    <p>Add some content here!</p>
+
+  {% if changelog %}
+    {{ changelogs_table(changelog) }}
+  {% else %}
+  <div class="blank-slate-pf">
+    <h1>
+      No changelog is available for this package.
+    </h1>
   </div>
-</div>
+  {% endif %}
 {% endblock %}

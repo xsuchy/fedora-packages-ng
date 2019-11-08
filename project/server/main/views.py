@@ -6,6 +6,7 @@ from flask import render_template, Blueprint
 from ..updates import get_updates
 from ..builds import get_builds
 from ..bugs import get_bugs
+from ..changelogs import get_changelogs
 from ...server import cache
 
 main_blueprint = Blueprint("main", __name__)
@@ -67,10 +68,13 @@ def package_contents(package_name):
                            package_name=package_name)
 
 
+@cache.cached(timeout=600)
 @main_blueprint.route("/packages/<package_name>/changelog")
 def package_changelog(package_name):
+    changelog = get_changelogs(package_name)
     return render_template("main/package-changelog.html",
-                           package_name=package_name)
+                           package_name=package_name,
+                           changelog=changelog)
 
 
 @main_blueprint.route("/packages/<package_name>/sources")

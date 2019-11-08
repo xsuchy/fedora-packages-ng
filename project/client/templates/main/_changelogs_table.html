@@ -1,0 +1,42 @@
+{% from "_helpers.html" import initialize_datatables %}
+
+{% macro changelogs_table(changelog) %}
+{% if changelog %}
+<noscript><p>WARNING!! This page is using JavaScript to filter and sort the table.
+          </p>
+</noscript>
+  <table class="datatable table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>Changes</th>
+        <th>Author</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for entry in changelog %}
+      <tr >
+        <td>
+          <strong>{{ entry.version }}</strong>
+        </td>
+        <td>
+          <pre>{{ entry.text }}</pre>
+        </td>
+        <td>
+          <strong>{{ entry.author }}</strong><br/>
+          <a href="mailto:{{ entry.email }}">&lt;{{ entry.email }}&gt;</a>
+        </td>
+        <td data-order="{{entry.date}}">
+          {{ entry.display_date }}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+  <h3>This package has no Changelog entries</h3>
+{% endif %}
+
+  {{ initialize_datatables() }}
+{% endmacro %}

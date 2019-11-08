@@ -14,14 +14,16 @@ RUN dnf -y upgrade \
   # requirements.txt.
   libpq-devel \
   python3 \
+  python3-bodhi-client \
   python3-bugzilla \
   python3-devel \
-  python3-pip \
-  python3-setuptools \
   python3-flask-cache \
   python3-humanize \
-  python3-bodhi-client \
   python3-koji \
+  python3-paste \
+  python3-pip \
+  python3-requests \
+  python3-setuptools \
   js-html5shiv \
   js-jquery1 \
   js-respond \
