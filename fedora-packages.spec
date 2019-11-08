@@ -14,16 +14,17 @@ Source0:        %name-%version.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-Requires:       python3
-Requires:       python3-devel
-Requires:       python3-setuptools
-Requires:       python3-flask-cache
-Requires:       python3-humanize
-Requires:       python3-bodhi-client
-Requires:       python3-koji
 Requires:       js-html5shiv
 Requires:       js-jquery1
 Requires:       js-respond
+Requires:       python3
+Requires:       python3-bodhi-client
+Requires:       python3-bugzilla
+Requires:       python3-devel
+Requires:       python3-flask-cache
+Requires:       python3-humanize
+Requires:       python3-koji
+Requires:       python3-setuptools
 Requires:       xstatic-bootstrap-scss-common
 Requires:       xstatic-datatables-common
 Requires:       xstatic-jquery-ui-common

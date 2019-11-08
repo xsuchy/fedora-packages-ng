@@ -8,6 +8,7 @@ name = "pypi"
 # https://github.com/xsuchy/fedora-packages-ng/issues/5
 # bodhi = "*"
 # bodhi-client = "*"
+bugzilla = "*"
 flask = "*"
 flask-bootstrap = "*"
 flask-cache = "*"

@@ -14,6 +14,7 @@ RUN dnf -y upgrade \
   # requirements.txt.
   libpq-devel \
   python3 \
+  python3-bugzilla \
   python3-devel \
   python3-pip \
   python3-setuptools \
