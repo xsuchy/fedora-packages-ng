@@ -34,7 +34,7 @@ from .pool import ThreadPool
 
 local = threading.local()
 local.http = requests.session()
-local.retries = Retry(connect=10, total=15, backoff_factor=1)
+local.retries = Retry(connect=20, total=30, backoff_factor=2)
 local.http.mount('https://', HTTPAdapter(max_retries=local.retries))
 log = logging.getLogger()
 
