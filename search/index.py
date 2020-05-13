@@ -46,6 +46,9 @@ def download_file(url, dest):
 
     log.info("Downloading %s to %s" % (url, dest))
     r = local.http.get(url, stream=True)
+    if not r.ok:
+        return None
+
     with open(dest, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if not chunk:
@@ -147,6 +150,8 @@ class Indexer(object):
         for release in self.active_fedora_releases:
             fname = 'fedora-%s.xml.gz' % release
             target = join(self.icons_path, 'tmp', str(release), fname)
+            if not os.path.exists(target):
+                return
 
             metadata = AppStreamGlib.Store()
 
