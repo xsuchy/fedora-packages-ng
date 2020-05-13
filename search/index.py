@@ -14,6 +14,8 @@ import threading
 import re
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 import xapian
 import pdc_client
 
@@ -86,6 +88,8 @@ class Indexer(object):
         self.icon_cache = {}
         pdc_url = pdc_url or "https://pdc.fedoraproject.org/rest_api/v1"
         self.pdc = pdc_client.PDCClient(pdc_url, develop=True, page_size=100)
+        retries = Retry(connect=10, total=15, backoff_factor=1)
+        self.pdc.session.mount('https://', HTTPAdapter(max_retries=retries))
 
         self.active_fedora_releases = self._get_active_fedora_releases()
 
