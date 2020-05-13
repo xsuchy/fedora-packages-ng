@@ -313,7 +313,7 @@ class Indexer(object):
             # rawhide... but that's okay.  we just queried pkgdb, so we should
             # see if it is active in any other branches, and if it is, get the
             # sub-packages from there.
-            raise StopIteration
+            return {}
 
         data = response.json()
         sub_package_names = sorted(set([
