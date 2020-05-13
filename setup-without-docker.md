@@ -39,7 +39,6 @@ See [Dockerfile](./Dockerfile) - Required dependencies part to install the nesss
 $ python3 manage.py create-db
 $ python3 manage.py db init
 $ python3 manage.py db migrate
-$ python3 manage.py create-admin
 $ python3 manage.py create-data
 ```
 

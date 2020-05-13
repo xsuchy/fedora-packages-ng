@@ -25,7 +25,6 @@ Create the database:
 $ docker-compose run web python3 manage.py create-db
 $ docker-compose run web python3 manage.py db init
 $ docker-compose run web python3 manage.py db migrate
-$ docker-compose run web python3 manage.py create-admin
 $ docker-compose run web python3 manage.py create-data
 ```
 

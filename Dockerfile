@@ -15,6 +15,7 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-bodhi-client \
+  python3-flask-bootstrap \
   python3-bugzilla \
   python3-devel \
   python3-flask-cache \
