@@ -2,7 +2,11 @@ import datetime
 import os
 
 import flask
-from flask_debugtoolbar import DebugToolbarExtension
+try:
+    debugtoolbar = True
+    from flask_debugtoolbar import DebugToolbarExtension
+except ModuleNotFoundError:
+    debugtoolbar = False
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,7 +14,8 @@ from flask_cache import Cache
 import humanize
 
 # instantiate the extensions
-toolbar = DebugToolbarExtension()
+if debugtoolbar:
+    toolbar = DebugToolbarExtension()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
@@ -31,8 +36,9 @@ def create_app(script_info=None):
     )
     app.config.from_object(app_settings)
 
-    # set up extensions
-    toolbar.init_app(app)
+    if debugtoolbar:
+        # set up extensions
+        toolbar.init_app(app)
     bootstrap.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
