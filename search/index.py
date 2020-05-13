@@ -28,7 +28,7 @@ gi.require_version('AppStreamGlib', '1.0')
 from gi.repository import AppStreamGlib
 
 # It is on the roof.
-import fedoracommunity.pool
+from . import pool
 
 local = threading.local()
 local.http = requests.session()
