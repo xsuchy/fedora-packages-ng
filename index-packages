@@ -103,5 +103,7 @@ if __name__=="__main__":
                     if os.path.isfile(old_file_path):
                         log.info("Removing %s" % old_file_path)
                         os.remove(old_file_path)
+    except KeyboardInterrupt:
+        pass
     finally:
         lockfile.release()
