@@ -109,7 +109,7 @@ class Indexer(object):
         for release in releases:
             if release['id_prefix'].lower() == 'fedora' and\
                release['state'] in ['current', 'pending']:
-                active_fedora_releases.append(int(release['version']))
+                active_fedora_releases.append(release['version'])
 
         active_fedora_releases.sort(reverse=True)
 
@@ -117,8 +117,8 @@ class Indexer(object):
 
     def pull_icons(self):
         for release in reversed(self.active_fedora_releases):
-            prefix = 'f%i' % release
-            files = ['fedora-%i.xml.gz', 'fedora-%i-icons.tar.gz']
+            prefix = 'f%s' % release
+            files = ['fedora-%s.xml.gz', 'fedora-%s-icons.tar.gz']
             for fname in files:
                 fname = fname % release
                 url = join(self.icons_url, prefix, fname)
@@ -144,7 +144,7 @@ class Indexer(object):
 
     def cache_icons(self):
         for release in self.active_fedora_releases:
-            fname = 'fedora-%i.xml.gz' % release
+            fname = 'fedora-%s.xml.gz' % release
             target = join(self.icons_path, 'tmp', str(release), fname)
 
             metadata = AppStreamGlib.Store()
