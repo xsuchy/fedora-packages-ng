@@ -82,7 +82,7 @@ class Indexer(object):
         self.icons_path = join(cache_path, 'icons')
         self.default_icon = 'package_128x128.png'
         self.bodhi_url = bodhi_url or "https://bodhi.fedoraproject.org"
-        self.mdapi_url = mdapi_url or "https://apps.fedoraproject.org/mdapi"
+        self.mdapi_url = mdapi_url or "https://mdapi.fedoraproject.org"
         self.icons_url = icons_url or "https://dl.fedoraproject.org/pub/alt/screenshots/"
         self.pagure_url = pagure_url or "https://src.fedoraproject.org/api/0"
         self.icon_cache = {}
