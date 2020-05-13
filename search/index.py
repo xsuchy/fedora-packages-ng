@@ -28,7 +28,7 @@ gi.require_version('AppStreamGlib', '1.0')
 from gi.repository import AppStreamGlib
 
 # It is on the roof.
-from . import pool
+from .pool import ThreadPool
 
 local = threading.local()
 local.http = requests.session()
@@ -372,7 +372,7 @@ class Indexer(object):
 
             return package
 
-        pool = fedoracommunity.pool.ThreadPool(20)
+        pool = ThreadPool(20)
         packages = pool.map(io_work, packages)
 
         for package in packages:
