@@ -131,13 +131,14 @@ class Indexer(object):
                     download_file(url, target)
                     continue
 
-                # Check the file to see if it is different
-                response = local.http.head(url)
-                remote_size = int(response.headers['content-length'])
-                local_size = stats.st_size
-                if remote_size == local_size:
-                    log.debug("%r seems unchanged." % url)
-                    continue
+                # FIXME content-length is not present, I need to rework this
+                ## Check the file to see if it is different
+                #response = local.http.head(url)
+                #remote_size = int(response.headers['content-length'])
+                #local_size = stats.st_size
+                #if remote_size == local_size:
+                #    log.debug("%r seems unchanged." % url)
+                #    continue
 
                 # Otherwise, they differ.  So download.
                 download_file(url, target)
