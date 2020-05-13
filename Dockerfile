@@ -1,4 +1,4 @@
-FROM fedora:30
+FROM fedora:32
 
 # Disable modular repositories to save a running time of "dnf upgrade"
 # if they exists.
