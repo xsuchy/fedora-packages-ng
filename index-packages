@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 # use this script when running the indexer from cron
 
@@ -8,10 +8,7 @@ import logging
 
 from fedoracommunity.search.index import run
 
-try:
-    from lockfile import LockFile
-except:
-    from lockfile import FileLock as LockFile
+from lockfile import LockFile
 
 from optparse import OptionParser
 
@@ -57,7 +54,7 @@ if __name__=="__main__":
     try:
         lockfile.acquire(timeout=30)
     except Exception as e:
-        print "Error acquiring lock file: %s" % str(e)
+        print("Error acquiring lock file: %s" % str(e))
         exit(-1)
 
     try:
