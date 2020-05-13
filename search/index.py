@@ -19,7 +19,7 @@ import pdc_client
 
 from os.path import join
 
-from utils import filter_search_string
+from .utils import filter_search_string
 
 import gi
 

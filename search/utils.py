@@ -1,4 +1,4 @@
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 words_translation = {'d-bus': 'dbus',
                      'gtk+': 'gtk'}
@@ -16,7 +16,7 @@ def filter_search_string (string):
     """
 
     string = string.lower()
-    for key, value in words_translation.items():
+    for key, value in list(words_translation.items()):
         string = string.replace(key, value)
 
     for char in reserved_chars:
