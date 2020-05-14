@@ -16,3 +16,9 @@ Review the set up guides to configure the app for detail:
 
 1. [setup-with-docker.md](setup-with-docker.md)
 2. [setup-without-docker.md](setup-without-docker.md)
+
+## Get the data
+
+You can run:
+
+./index-packages --debug -p /tmp/ --index-db-dest index-db
