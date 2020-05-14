@@ -23,6 +23,7 @@ Requires:       python3-bugzilla
 Requires:       python3-devel
 Requires:       python3-flask-cache
 Requires:       python3-paste
+Requires:       python3-pdc-client
 Requires:       python3-humanize
 Requires:       python3-koji
 Requires:       python3-requests
