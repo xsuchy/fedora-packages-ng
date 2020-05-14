@@ -8,24 +8,24 @@ Create and activate a virtual environment, and then install the requirements.
 
 ### Set Environment Variables
 
-Update *project/server/config.py*, and then run:
+Update *fedoracommunity/server/config.py*, and then run:
 
 ```sh
 $ export APP_NAME="fedora-packages"
-$ export APP_SETTINGS="project.server.config.ProductionConfig"
+$ export APP_SETTINGS="fedoracommunity.server.config.ProductionConfig"
 $ export FLASK_DEBUG=0
 ```
 By default the app is set to use the production configuration. If you would like to use the development configuration, you can alter the `APP_SETTINGS` environment variable:
 
 ```sh
-$ export APP_SETTINGS="project.server.config.DevelopmentConfig"
+$ export APP_SETTINGS="fedoracommunity.server.config.DevelopmentConfig"
 ```
 
 Using [Pipenv](https://docs.pipenv.org/) or [python-dotenv](https://github.com/theskumar/python-dotenv)? Use the *.env* file to set environment variables:
 
 ```
 APP_NAME="fedora-packages"
-APP_SETTINGS="project.server.config.DevelopmentConfig"
+APP_SETTINGS="fedoracommunity.server.config.DevelopmentConfig"
 FLASK_DEBUG=1
 ```
 

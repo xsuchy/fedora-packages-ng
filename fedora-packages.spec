@@ -32,6 +32,7 @@ Requires:       xstatic-bootstrap-scss-common
 Requires:       xstatic-datatables-common
 Requires:       xstatic-jquery-ui-common
 Requires:       xstatic-patternfly-common
+Recommends:     logrotate
 
 Provides:       bundled(bootstrap-combobox) = 1.1.6
 Provides:       bundled(bootstrap-select) = 1.5.4
@@ -56,7 +57,11 @@ packages inside Fedora.
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}
-cp -a project manage.py %{buildroot}%{_datadir}/%{name}
+cp -a fedoracommunity manage.py %{buildroot}%{_datadir}/%{name}
+
+install -d %{buildroot}%{_sysconfdir}/logrotate.d
+cp -a logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+
 
 %post
 /bin/systemctl condrestart httpd.service || :

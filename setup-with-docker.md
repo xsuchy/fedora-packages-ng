@@ -15,7 +15,7 @@ $ docker-compose up -d --build
 By default the app is set to use the production configuration. If you would like to use the development configuration, you can alter the `APP_SETTINGS` environment variable:
 
 ```
-APP_SETTINGS="project.server.config.DevelopmentConfig"
+APP_SETTINGS="fedoracommunity.server.config.DevelopmentConfig"
 ```
 
 

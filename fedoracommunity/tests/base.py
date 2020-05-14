@@ -1,4 +1,4 @@
-# project/server/tests/base.py
+# fedoracommunity/server/tests/base.py
 from flask_testing import TestCase
 
 from project.server import app, db
@@ -6,7 +6,7 @@ from project.server import app, db
 
 class BaseTestCase(TestCase):
     def create_app(self):
-        app.config.from_object("project.server.config.TestingConfig")
+        app.config.from_object("fedoracommunity.server.config.TestingConfig")
         return app
 
     def setUp(self):

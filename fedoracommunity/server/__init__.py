@@ -32,7 +32,7 @@ def create_app(script_info=None):
 
     # set config
     app_settings = os.getenv(
-        "APP_SETTINGS", "project.server.config.ProductionConfig"
+        "APP_SETTINGS", "fedoracommunity.server.config.ProductionConfig"
     )
     app.config.from_object(app_settings)
 
@@ -44,7 +44,7 @@ def create_app(script_info=None):
     migrate.init_app(app, db)
 
     # register blueprints
-    from project.server.main.views import main_blueprint
+    from fedoracommunity.server.main.views import main_blueprint
 
     app.register_blueprint(main_blueprint)
 

@@ -1,4 +1,4 @@
-# project/server/config.py
+# fedoracommunity/server/config.py
 
 import os
 

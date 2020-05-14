@@ -1,4 +1,4 @@
-# project/server/tests/test_config.py
+# fedoracommunity/server/tests/test_config.py
 
 
 import unittest
@@ -7,14 +7,14 @@ import os
 from flask import current_app
 from flask_testing import TestCase
 
-from project.server import create_app
+from fedoracommunity.server import create_app
 
 app = create_app()
 
 
 class TestDevelopmentConfig(TestCase):
     def create_app(self):
-        app.config.from_object("project.server.config.DevelopmentConfig")
+        app.config.from_object("fedoracommunity.server.config.DevelopmentConfig")
         return app
 
     def test_app_is_development(self):
@@ -26,7 +26,7 @@ class TestDevelopmentConfig(TestCase):
 
 class TestTestingConfig(TestCase):
     def create_app(self):
-        app.config.from_object("project.server.config.TestingConfig")
+        app.config.from_object("fedoracommunity.server.config.TestingConfig")
         return app
 
     def test_app_is_testing(self):
@@ -36,7 +36,7 @@ class TestTestingConfig(TestCase):
 
 class TestProductionConfig(TestCase):
     def create_app(self):
-        app.config.from_object("project.server.config.ProductionConfig")
+        app.config.from_object("fedoracommunity.server.config.ProductionConfig")
         return app
 
     def test_app_is_production(self):

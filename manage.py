@@ -7,7 +7,7 @@ import coverage
 
 from flask.cli import FlaskGroup
 
-from project.server import app, create_app, db
+from fedoracommunity.server import app, create_app, db
 import subprocess
 import sys
 
@@ -16,11 +16,11 @@ cli = FlaskGroup(create_app=create_app)
 # code coverage
 COV = coverage.coverage(
     branch=True,
-    include="project/*",
+    include="fedoracommunity/*",
     omit=[
-        "project/tests/*",
-        "project/server/config.py",
-        "project/server/*/__init__.py",
+        "fedoracommunity/tests/*",
+        "fedoracommunity/server/config.py",
+        "fedoracommunity/server/*/__init__.py",
     ],
 )
 COV.start()

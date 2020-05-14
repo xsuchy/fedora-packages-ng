@@ -1,4 +1,4 @@
-# project/server/tests/test_main.py
+# fedoracommunity/server/tests/test_main.py
 
 
 import unittest

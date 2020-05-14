@@ -1,4 +1,4 @@
-# project/server/main/views.py
+# fedoracommunity/server/main/views.py
 
 
 from flask import render_template, Blueprint
