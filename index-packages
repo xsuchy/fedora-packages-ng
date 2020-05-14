@@ -6,7 +6,7 @@ import os
 import shutil
 import logging
 
-from search.index import run
+from fedoracommunity.search.index import run
 
 from lockfile import LockFile
 
