@@ -1,0 +1,35 @@
+# This image can only be built when it is executed with context
+# set to root directory or project checkout.
+#
+#     docker build -f packages ../
+#
+# `docker-compose build` from parent dir does this automatically.
+
+FROM registry.fedoraproject.org/fedora:27
+
+COPY 01packages.txt /root/01packages.txt
+RUN dnf install -y $(grep "^[^#]" /root/01packages.txt)
+RUN dnf clean all
+
+RUN mkdir -p  /var/log/fedoracommunity\
+    /var/cache/fedoracommunity/packages/icons\
+    /var/cache/fedoracommunity/packages/xapian/search\
+    /var/cache/fedoracommunity/packages/tmp/icons\
+    /var/cache/fedoracommunity/packages/tmp/search\
+    /var/cache/fedoracommunity/packages/tmp/var\
+    /var/tmp/fedoracommunity/icons/tmp\
+    /usr/share/fedoracommunity \
+    /tmp/xapian\
+    #forward error logs to docker log collector
+    && ln -sf /dev/stdout /var/log/httpd/fedoracommunity_error_log
+
+EXPOSE 80
+
+# download and unpack production database
+WORKDIR /var/cache/fedoracommunity/packages
+RUN curl -O https://cverna.fedorapeople.org/xapian.tar.gz
+RUN tar -xvf xapian.tar.gz
+
+COPY docker/entry-point.sh /root/entry-point.sh
+COPY docker/fedora-packages.conf /etc/httpd/conf.d/fedora-packages.conf
+COPY docker/development.ini /etc/fedoracommunity/production.ini
