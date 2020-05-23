@@ -1,20 +1,22 @@
 {% extends "_base.html" %}
 {% block content %}
 
+<div class="container-fluid">
+  <!-- START Logo -->
+  <div class="text-center" id="header-search">
+      <h1><img src="{{ url_for('static', filename='fedora_packages_logo.png')
+   }}" alt="Fedora Packages"></h1>
+  </div>
+  <!-- END Logo -->
+  <div class="clear"></div>
+
+  {% include 'main/search.html' %}
+</div>
+
 <div class="container">
-<!-- START Logo -->
-<div class="text-center" id="header-search">
-    <h1><img src="{{ url_for('static', filename='fedora_packages_logo.png')
- }}" alt="Fedora Packages"></h1>
-</div>
-<!-- END Logo -->
-<div class="clear"></div>
-</div>
-
-{% include 'main/search.html' %}
-
 {% block search_results %}
 {% endblock %}
+</div>
 
 <div> </div>
 <br/>
