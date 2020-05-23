@@ -27,7 +27,7 @@
 </head>
 <body>
 
-  {% macro nav_element(tab_name, tab_title, icon,  href) %} 
+  {% macro nav_element(tab_name, tab_title, icon,  href) %}
   <li class="{% if selected_tab == tab_name %}active{% endif %}">
     <a href="{{ href }}"> <span class="{{icon}}"></span> {% if "pficon" not in icon %}&nbsp;{%endif%}
       {{ tab_title }}
@@ -56,7 +56,7 @@
         </div>
         {% endif %}
         {% endwith %}
-        
+
         <!-- errors -->
         {% if error %}
           <p class="error"><strong>Error:</strong> {{ error }}</p>
@@ -72,5 +72,3 @@
   </div>
 </body>
 </html>
-
-
