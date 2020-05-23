@@ -2,10 +2,9 @@
 {% block search_results %}
 
 <!-- START Search Results -->
-<div class="container_24">
   <div class="grid_24" id="search-results-table">
     <div class="grid_12 suffix_12" id="search-notes">
-      <div id="grid-controls" if="filters.search!=''">
+      <div class="grid-controls" if="filters.search!=''">
         <div class="message template text-xs-center text-muted py-1" id="info_display">
            {{ packages | count }} results
         </div>
@@ -33,10 +32,10 @@
 	{% endfor %}
       </tbody>
     </table>
-    <div id="grid-controls">
-        <div class="pager text-xs-center mb-3" id="pager" type="more"></div>
+    <div class="grid-controls">
+        <div class="pager text-xs-center mb-3" id="pager"></div>
    </div>
-   <script type="text/javascript">
+   <script>
 
        function update_search_grid(search_term) {
             var grid = $("#${w.id}").mokshagrid("request_update", {"filters":{"search": search_term}});
