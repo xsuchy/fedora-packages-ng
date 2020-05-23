@@ -1,31 +1,36 @@
+{% extends "main/home.html" %}
+{% block search_results %}
+
 <!-- START Search Results -->
 <div class="container_24">
   <div class="grid_24" id="search-results-table">
     <div class="grid_12 suffix_12" id="search-notes">
       <div id="grid-controls" if="filters.search!=''">
         <div class="message template text-xs-center text-muted py-1" id="info_display">
-           ${'${total_rows}'} results
+           {{ packages | count }} results
         </div>
       </div>
     </div>
     <table id="${w.id}" class="table">
       <tbody class="rowtemplate">
+	{% for package in packages %}
         <tr class="priority4">
             <td>
-                <span><a href="${tg.url('/${link}')}">${'{{html name}}'}</a></span>
+                <span><a href="{{ package.url }} ">{{ package.name }}</a></span>
             </td>
             <td>
-                ${'{{html summary}}'}
+                {{ package.summary }}
             </td>
         </tr>
-          <!-- {{each(index, pkg) sub_pkgs}} -->
+	  {% for subpackage in package.subpackages %}
           <tr class="subpackage">
               <td>
-                  <span><a href="${tg.url('/') + '${pkg[\'link\']}'}">${'{{html pkg["name"]}}'}</a></span>
+                  <span><a href="{{ subpackage.url }}">{{ subpackage.name }}</a></span>
               </td>
-              <td>${'{{html pkg["summary"]}}'}</td>
+              <td>{{ subpackage.summary }}</td>
           </tr>
-          <!-- {{/each}} -->
+	  {% endfor %}
+	{% endfor %}
       </tbody>
     </table>
     <div id="grid-controls">
@@ -49,3 +54,4 @@
 </div>
 
 <!-- END Search Results -->
+{% endblock %}

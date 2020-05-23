@@ -1,6 +1,7 @@
 # fedoracommunity/server/main/views.py
 
 
+import flask
 from flask import render_template, Blueprint
 
 from ..updates import get_updates
@@ -15,6 +16,34 @@ main_blueprint = Blueprint("main", __name__)
 @main_blueprint.route("/")
 def home():
     return render_template("main/home.html")
+
+
+@main_blueprint.route("/", methods=["POST"])
+def home_post():
+    url = "/packages/s/{0}".format(flask.request.form["package_name"])
+    return flask.redirect(url)
+
+
+@main_blueprint.route("/packages/s/")
+@main_blueprint.route("/packages/s/<package_name>/")
+def packages_search(package_name=None):
+
+    # @TODO move to models
+    class Package:
+        def __init__(self, name, summary, subpackages=None):
+            self.name = name
+            self.summary = summary
+            self.subpackages = subpackages
+            self.url = "/packages/" + name
+
+    # @TODO have some real logic function for this
+    packages = [
+        Package("pkg1", "sum1", [Package("sub1", "subsum1"), Package("sub2", "subsum2")]),
+        Package("pkg2", "sum2", [Package("sub3", "subsum3")]),
+    ]
+
+    return render_template("search_results.html",
+                           packages=packages)
 
 
 @main_blueprint.route("/packages/")
