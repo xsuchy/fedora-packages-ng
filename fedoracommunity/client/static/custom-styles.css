@@ -53,3 +53,14 @@ input.short-input-field {
   font-size: 4em;
   text-align: center;
 }
+
+
+/* In the original fedora-packages site, this is defined in fedora-packages.css */
+
+#search-results-table .subpackage td {
+  text-indent: 1.5em;
+}
+
+#search-results-table .subpackage {
+    font-size: smaller;
+}
