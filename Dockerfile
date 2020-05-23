@@ -23,7 +23,7 @@ RUN dnf -y upgrade \
   python3-koji \
   python3-paste \
   python3-pip \
-  python3-pdc_client \
+  python3-pdc-client \
   python3-requests \
   python3-setuptools \
   js-html5shiv \
