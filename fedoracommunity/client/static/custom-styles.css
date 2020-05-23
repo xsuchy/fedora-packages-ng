@@ -1,3 +1,7 @@
+body {
+  font-family: "Open Sans" !important;
+}
+
 div.pypi-python-version {
 	cursor: default;
 }
@@ -52,6 +56,12 @@ input.short-input-field {
 .bugcount{
   font-size: 4em;
   text-align: center;
+}
+
+#search-results-table table {
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
 }
 
 
