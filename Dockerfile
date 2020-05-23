@@ -33,6 +33,7 @@ RUN dnf -y upgrade \
   xstatic-datatables-common \
   xstatic-jquery-ui-common \
   xstatic-patternfly-common \
+  python3-psycopg2 \
   # Development dependencies
   # For netcat (nc) command in entrypoint.sh.
   nmap-ncat \
