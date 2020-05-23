@@ -8,3 +8,11 @@ pre code div {margin-bottom:-11px; margin-top:-2px; font-size:12px}
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
+.btn-lg {
+  font-size: 18px !important;
+}
+
+form {
+  margin-block-end: 1em;
+}
