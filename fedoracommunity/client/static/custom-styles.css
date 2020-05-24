@@ -1,5 +1,21 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Open Sans" !important;
+
+  /* Keep footer always on bottom */
+  position: relative;
+  padding-bottom: 200px;
+  min-height: 100%;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: transparent;
 }
 
 div.pypi-python-version {
