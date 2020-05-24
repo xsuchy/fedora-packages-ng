@@ -89,11 +89,8 @@ footer > div{
 }
 
 #main-bar {
-  background-image: url('header_background.png');
+  background-image: linear-gradient(to bottom, #eee 0%, #ddd 100%);
   background-repeat: repeat-x;
-  height: 75px;
-  color: white;
-  //margin-bottom: 30px;
 }
 
 #main-bar .container {
@@ -112,7 +109,7 @@ footer > div{
 #logo {
   position: relative;
   top: 6px;
-  height: 58px;
+  height: 40px;
 }
 
 div.breadcrumb-panel {
