@@ -4,9 +4,10 @@
 {% include 'main/main-bar.html' %}
 {% include 'main/package-detail.html' %}
 
+<div class="container">
 
-<!-- MENU -->
-<ul class="nav nav-tabs">
+  <!-- MENU -->
+  <ul class="nav nav-tabs">
 
     {{ nav_element("overview", "Overview", "fa fa-home", url_for('main.packages', package_name=package_name)) }}
     {{ nav_element("builds", "Builds", "fa fa-tasks", url_for('main.package_builds', package_name=package_name)) }}
@@ -16,8 +17,9 @@
     {{ nav_element("contents", "Contents", "fa ", url_for('main.package_contents', package_name=package_name)) }}
     {{ nav_element("changelog", "Changelog", "fa",  url_for('main.package_changelog', package_name=package_name)) }}
     {{ nav_element("sources", "Sources", "fa", url_for('main.package_sources', package_name=package_name)) }}
-</ul>
+  </ul>
 
-{% block body_content %}{% endblock %}
+  {% block body_content %}{% endblock %}
 
+</div>
 {% endblock %}

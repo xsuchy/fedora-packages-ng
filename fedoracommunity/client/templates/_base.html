@@ -37,7 +37,6 @@
 
 
    <!-- CONTENT -->
-  <div id=content>
   <div class="container">
 
         <!-- messages -->
@@ -66,10 +65,11 @@
 
 
   </div>
-  </div>
 
   <!-- child template -->
-  {% block content %}{% endblock %}
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
   {% include 'footer.html' %}
 </body>
 </html>
