@@ -11,4 +11,5 @@ def get_packages():
 
 # @TODO have some real logic function for this
 def get_package(package_name):
-    return Package(package_name, "Summary for {0} package".format(package_name))
+    return Package(package_name, "Summary for {0} package".format(package_name),
+                   [Package("sub1", "subsum1"), Package("sub2", "subsum2")])

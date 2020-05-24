@@ -126,3 +126,14 @@ img.package-image {
     background: #f3f3f3;
     border-bottom: 1px solid #DDD;
 }
+
+.package-tree ul {
+  list-style: none;
+  margin-left: 0.4em;
+  padding: 0;
+}
+
+.package-tree ul ul {
+  list-style: square url(/static/images/list_tree_marker.png);
+  margin-left: 1.3em;
+}

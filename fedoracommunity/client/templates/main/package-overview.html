@@ -6,18 +6,15 @@
 <div class="body-content">
 <div>
 
-<div class="col-sm-9">                                                                                                                                  
+<div class="col-sm-9">
 <div id="package-overview">
   <div class="description-block">
-        <p class="package-description">DESCRIPTION OF PACKAGE</p>
+        <p class="package-description">{{ package.description }}</p>
     </div>
     <div class="active-release-block">
         <h3>Active Releases Overview</h3>
         <div>HERE WILL GO TABLE OF RELEASES</div>
     </div>
-    <%
-        homepage = w.package_info.get('upstream_url', 'Unknown')
-    %>
 
     <div class="history-block">
         <h3>Recent History</h3>
@@ -29,40 +26,37 @@
 </div>
 <div class="col-sm-3 pl-2">
 
-  % if homepage:
+  {% if package.homepage %}
   <div class="upstream-block mb-1">
       <h4>Upstream</h4>
-      <a href="${homepage}">${homepage}</a>
+      <a href="{{ package.homepage }}">{{ package.homepage }}</a>
   </div>
-  % endif
+  {% endif %}
 
   <div class="package-tree mb-1">
       <div><h4>Package Tree</h4></div>
       <ul>
-        <li><a class="package-name" href="${tg.url('/%s' % w.package_info['name'])}">${w.package_info['name']}</a>
+        <li><a class="package-name" href="{{ package.url }}">{{ package.name }}</a>
         <ul>
-            % for subpkg in w.package_info['sub_pkgs']:
-                  <li><a class="package-name" href="${tg.url('/%s' % subpkg['name'])}">${subpkg['name']}</a></li>
-            % endfor
+            {% for subpackage in package.subpackages %}
+                  <li><a class="package-name" href="{{ subpackage.url }}">{{ subpackage.name }}</a></li>
+            {% endfor %}
         </ul>
       </li>
       </ul>
   </div>
   <div class="owner mb-1">
       <div><h4>Point of Contact</h4></div>
-      % if w.package_info.get('devel_owner', None):
-          % if w.package_info['devel_owner'].endswith('-maint'):
-              <div class="package-owner"><a class="package-owner" href="https://admin.fedoraproject.org/pkgdb/users/packages/${w.package_info['devel_owner']}">${w.package_info['devel_owner']}</a> <span class="tag tag-info">Rawhide</span></div>
-          % else:
-              <div class="package-owner"><a class="package-owner" href="https://fedoraproject.org/wiki/User:${w.package_info['devel_owner']}">${w.package_info['devel_owner']}</a> <span class="tag tag-info">Rawhide</span> </div>
-          % endif
-      % else:
+      {% if package.owner %}
+            <div class="package-owner"><a class="package-owner" href="{{ package.owner.url }}">{{ package.owner.name }}</a>
+            <span class="tag tag-info">Rawhide</span></div>
+      {% else %}
           <div class="package-owner orphan">Orphaned <span class="tag tag-info">Rawhide</span></div>
-      % endif
+      {% endif %}
   </div>
   <div class="build mb-1">
       <div><h4>Latest Build</h4></div>
-      <div class="package-name">${w.latest_build}</div>
+      <div class="package-name">{{ package.latest_build }}</div>
   </div>
 </div>
 <script>
