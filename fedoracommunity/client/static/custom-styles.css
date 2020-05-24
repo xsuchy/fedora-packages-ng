@@ -80,6 +80,20 @@ input.short-input-field {
     font-style: normal;
 }
 
+#main-bar {
+  margin-bottom: 0px !important;
+}
+
+
+.pb-3, #menu {
+    background: #f3f3f3;
+}
+
+#menu {
+    border-bottom: 1px solid #DDD;
+    margin-top: 0px;
+}
+
 
 /* In the original fedora-packages site, this is defined in fedora-packages.css */
 
@@ -89,4 +103,26 @@ input.short-input-field {
 
 #search-results-table .subpackage {
     font-size: smaller;
+}
+
+img.package-image {
+  float: left;
+}
+
+.package-header {
+  margin-left: 110px;
+  display: block;
+}
+
+.package-header h2 {
+  display: inline;
+}
+
+.subheader {
+  background: #f3f3f3;
+}
+
+.tabs {
+    background: #f3f3f3;
+    border-bottom: 1px solid #DDD;
 }
