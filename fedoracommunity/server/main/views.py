@@ -6,6 +6,7 @@ from flask import render_template, Blueprint
 
 from ..updates import get_updates
 from ..builds import get_builds
+from ..packages import get_packages, get_package
 from ..bugs import get_bugs
 from ..changelogs import get_changelogs
 from ...server import cache
@@ -27,21 +28,7 @@ def home_post():
 @main_blueprint.route("/packages/s/")
 @main_blueprint.route("/packages/s/<package_name>/")
 def packages_search(package_name=None):
-
-    # @TODO move to models
-    class Package:
-        def __init__(self, name, summary, subpackages=None):
-            self.name = name
-            self.summary = summary
-            self.subpackages = subpackages
-            self.url = "/packages/" + name
-
-    # @TODO have some real logic function for this
-    packages = [
-        Package("pkg1", "sum1", [Package("sub1", "subsum1"), Package("sub2", "subsum2")]),
-        Package("pkg2", "sum2", [Package("sub3", "subsum3")]),
-    ]
-
+    packages = get_packages()
     return render_template("search_results.html",
                            packages=packages)
 
