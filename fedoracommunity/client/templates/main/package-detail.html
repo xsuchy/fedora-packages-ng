@@ -4,10 +4,10 @@
       <div class="container pt-2">
       <img src="{{ url_for('static', filename='images/package_128x128.png') }}" class="package-image" height="96" width="96"/>
       <div class="package-header">
-        <h2>{{ package_name }}
+        <h2>{{ package.name }}
           <span class="dropdown show">
             <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ package_name }} in other apps
+              {{ package.name }} in other apps
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="https://admin.fedoraproject.org/updates/{{ name }}"><img src="{{ url_for('static', filename='images/16_bodhi.png') }}"/> Bodhi </a> </li>
@@ -18,13 +18,13 @@
             </div>
           </span>
         </h2>
-        {% if package_name != name %}
-            Subpackage of <a class="subpackage_link" href="/{{ name }}">{{ name }}</a>
+        {% if package.is_subpackage %}
+            Subpackage of <a class="subpackage_link" href="{{ package.parent.url }}">{{ package.parent.url }}</a>
         {% endif %}
-        <div><em>{{ summary }}</em></div>
+        <div><em>{{ package.summary }}</em></div>
         <div>
             <h4>Install this package:</h4>
-            <em> dnf install {{ package_name }} </em>
+            <em> dnf install {{ package.name }} </em>
         </div>
       </div>
     </div>

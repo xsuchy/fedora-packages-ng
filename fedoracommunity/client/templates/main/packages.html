@@ -9,14 +9,14 @@
   <!-- MENU -->
   <ul class="nav nav-tabs">
 
-    {{ nav_element("overview", "Overview", "fa fa-home", url_for('main.packages', package_name=package_name)) }}
-    {{ nav_element("builds", "Builds", "fa fa-tasks", url_for('main.package_builds', package_name=package_name)) }}
-    {{ nav_element("updates", "Updates", "fa pficon-process-automation",  url_for('main.package_updates', package_name=package_name)) }}
-    {{ nav_element("bugs", "Bugs", "fa fa-bug", url_for('main.package_bugs', package_name=package_name)) }}
-    {{ nav_element("problems", "Problems", "fa pficon-security", url_for('main.package_problems', package_name=package_name)) }}
-    {{ nav_element("contents", "Contents", "fa ", url_for('main.package_contents', package_name=package_name)) }}
-    {{ nav_element("changelog", "Changelog", "fa",  url_for('main.package_changelog', package_name=package_name)) }}
-    {{ nav_element("sources", "Sources", "fa", url_for('main.package_sources', package_name=package_name)) }}
+    {{ nav_element("overview", "Overview", "fa fa-home", url_for('main.packages', package_name=package.name)) }}
+    {{ nav_element("builds", "Builds", "fa fa-tasks", url_for('main.package_builds', package_name=package.name)) }}
+    {{ nav_element("updates", "Updates", "fa pficon-process-automation",  url_for('main.package_updates', package_name=package.name)) }}
+    {{ nav_element("bugs", "Bugs", "fa fa-bug", url_for('main.package_bugs', package_name=package.name)) }}
+    {{ nav_element("problems", "Problems", "fa pficon-security", url_for('main.package_problems', package_name=package.name)) }}
+    {{ nav_element("contents", "Contents", "fa ", url_for('main.package_contents', package_name=package.name)) }}
+    {{ nav_element("changelog", "Changelog", "fa",  url_for('main.package_changelog', package_name=package.name)) }}
+    {{ nav_element("sources", "Sources", "fa", url_for('main.package_sources', package_name=package.name)) }}
   </ul>
 
   {% block body_content %}{% endblock %}

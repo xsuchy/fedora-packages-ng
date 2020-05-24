@@ -39,32 +39,36 @@ def packages(package_name=None):
     if not package_name:
         return home()
     else:
+        package = get_package(package_name)
         return render_template("main/package-overview.html",
-                               package_name=package_name)
+                               package=package)
 
 
 @cache.cached(timeout=120)
 @main_blueprint.route("/packages/<package_name>/builds")
 def package_builds(package_name):
+    package = get_package(package_name)
     builds = get_builds(package_name)
     return render_template("main/package-builds.html",
-                           package_name=package_name, builds=builds)
+                           package=package, builds=builds)
 
 
 @cache.cached(timeout=120)
 @main_blueprint.route("/packages/<package_name>/updates")
 def package_updates(package_name):
+    package = get_package(package_name)
     updates = get_updates(package_name)
     return render_template("main/package-updates.html",
-                           package_name=package_name, updates=updates)
+                           package=package, updates=updates)
 
 
 @cache.cached(timeout=600)
 @main_blueprint.route("/packages/<package_name>/bugs")
 def package_bugs(package_name):
+    package = get_package(package_name)
     bugs = get_bugs(package_name)
     return render_template("main/package-bugs.html",
-                           package_name=package_name, bugs=bugs['bugs'],
+                           package=package, bugs=bugs['bugs'],
                            open_bugs=bugs['open_bugs'],
                            open_bugs_url=bugs['open_bugs_url'],
                            blocker_bugs=bugs['blocker_bugs'],
@@ -74,26 +78,30 @@ def package_bugs(package_name):
 
 @main_blueprint.route("/packages/<package_name>/problems")
 def package_problems(package_name):
+    package = get_package(package_name)
     return render_template("main/package-problems.html",
-                           package_name=package_name)
+                           package=package)
 
 
 @main_blueprint.route("/packages/<package_name>/contents")
 def package_contents(package_name):
+    package = get_package(package_name)
     return render_template("main/package-contents.html",
-                           package_name=package_name)
+                           package=package)
 
 
 @cache.cached(timeout=600)
 @main_blueprint.route("/packages/<package_name>/changelog")
 def package_changelog(package_name):
+    package = get_package(package_name)
     changelog = get_changelogs(package_name)
     return render_template("main/package-changelog.html",
-                           package_name=package_name,
+                           package=package,
                            changelog=changelog)
 
 
 @main_blueprint.route("/packages/<package_name>/sources")
 def package_sources(package_name):
+    package = get_package(package_name)
     return render_template("main/package-sources.html",
-                           package_name=package_name)
+                           package=package)
