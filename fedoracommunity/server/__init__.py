@@ -12,6 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cache import Cache
 import humanize
+from ..search.database import Database
 
 # instantiate the extensions
 if debugtoolbar:
@@ -41,6 +42,9 @@ if debugtoolbar:
 bootstrap.init_app(app)
 db.init_app(app)
 migrate.init_app(app, db)
+
+# interface over xapian cache
+xapian_cache = Database(app.config["CACHE_PATH"])
 
 # register blueprints
 from fedoracommunity.server.main.views import main_blueprint

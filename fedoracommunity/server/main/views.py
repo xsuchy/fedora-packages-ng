@@ -28,9 +28,10 @@ def home_post():
 @main_blueprint.route("/packages/s/")
 @main_blueprint.route("/packages/s/<package_name>/")
 def packages_search(package_name=None):
-    packages = get_packages()
+    packages = get_packages(package_name)
+    total = packages.count()
     return render_template("search_results.html",
-                           packages=packages)
+                           packages=packages.all(), total=total)
 
 
 @main_blueprint.route("/packages/")

@@ -13,6 +13,7 @@ class BaseConfig(object):
     SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
+    CACHE_PATH = "/usr/src/app/index-db-snap-2020-05-14/search"
 
 
 class DevelopmentConfig(BaseConfig):

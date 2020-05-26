@@ -1,15 +1,18 @@
 # fedoracommunity/server/models.py
 
 class Package:
-    def __init__(self, name, summary, subpackages=None):
-        self.name = name
-        self.summary = summary
-        self.subpackages = subpackages
+    def __init__(self, xapian_dict):
+        self._xapian_dict = xapian_dict
 
-        # TODO
-        self.description = "This is a description for {0} package".format(name)
-        self.homepage = "https://foo.bar/baz"
-        self.owner = Owner("msuchy")
+        # Required values
+        self.name = xapian_dict["name"]
+        self.summary = xapian_dict["summary"]
+        self.description = xapian_dict["description"]
+
+        # Optional values
+        self.homepage = xapian_dict.get("upstream_url")
+        self.owner = xapian_dict.get("devel_owner")
+        self.subpackages = [Package(x) for x in xapian_dict.get("sub_pkgs", [])]
 
     @property
     def url(self):
