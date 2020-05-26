@@ -7,9 +7,12 @@ import coverage
 
 from flask.cli import FlaskGroup
 
-from fedoracommunity.server import app, create_app, db
+from fedoracommunity.server import app, db
 import subprocess
 import sys
+
+def create_app():
+    return app
 
 cli = FlaskGroup(create_app=create_app)
 
