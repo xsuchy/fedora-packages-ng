@@ -94,6 +94,10 @@ input.short-input-field {
     margin-top: 0px;
 }
 
+#changelog.table thead {
+  background: none;
+}
+
 
 /* In the original fedora-packages site, this is defined in fedora-packages.css */
 
