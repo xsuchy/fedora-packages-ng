@@ -12,6 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cache import Cache
 import humanize
+import markdown
 from ..search.database import Database
 
 # instantiate the extensions
@@ -109,6 +110,11 @@ def time_ago(time_in, until=None):
         now = datetime.datetime.now()
     diff = now - datetime.datetime.fromtimestamp(time_in)
     return humanize.naturaldelta(diff)
+
+
+@app.template_filter("markdown")
+def markdown_to_html(value):
+    return markdown.markdown(value)
 
 
 cache.init_app(app)

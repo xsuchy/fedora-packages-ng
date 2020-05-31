@@ -21,7 +21,7 @@
           <strong>{{ entry.version }}</strong>
         </td>
         <td>
-          <pre>{{ entry.text }}</pre>
+          {{ entry.text |markdown |safe }}
         </td>
         <td>
           <strong>{{ entry.author }}</strong><br/>

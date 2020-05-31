@@ -28,6 +28,7 @@ Requires:       python3-humanize
 Requires:       python3-koji
 Requires:       python3-requests
 Requires:       python3-setuptools
+Requires:       python3-markdown
 Requires:       xstatic-bootstrap-scss-common
 Requires:       xstatic-datatables-common
 Requires:       xstatic-jquery-ui-common
