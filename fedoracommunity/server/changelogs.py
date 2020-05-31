@@ -32,6 +32,5 @@ def get_changelogs(package_name):
             entry['version'] = m.group(3)
         else:
             entry['author'] = entry['author']
-        # convert the date to a nicer format
-        entry['display_date'] = str(datetime.fromtimestamp(entry['date']))
+        entry['date'] = datetime.fromtimestamp(entry['date'])
     return data

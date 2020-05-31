@@ -28,7 +28,7 @@
           <a href="mailto:{{ entry.email }}">&lt;{{ entry.email }}&gt;</a>
         </td>
         <td data-order="{{entry.date}}">
-          {{ entry.display_date }}
+          {{ entry.date |date }}
         </td>
       </tr>
     {% endfor %}

@@ -117,4 +117,9 @@ def markdown_to_html(value):
     return markdown.markdown(value)
 
 
+@app.template_filter("date")
+def format_date(value):
+    return value.strftime("%d %b %Y")
+
+
 cache.init_app(app)
