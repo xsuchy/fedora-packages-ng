@@ -31,7 +31,8 @@ def packages_search(package_name=None):
     packages = get_packages(package_name)
     total = packages.count()
     return render_template("search_results.html",
-                           packages=packages.all(), total=total)
+                           packages=packages.all(), total=total,
+                           package_name=package_name)
 
 
 @main_blueprint.route("/packages/")
