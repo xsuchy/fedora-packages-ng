@@ -11,9 +11,10 @@
           <div id="login-menu" class="text-right">
 
           </div>
-          <form role="search" method="get" action="{{ url_for('main.packages') }}">
+          <form role="search" method="POST" action="/">
             <div class="input-group menu-search">
-              <input name="fulltext" type="text" class="form-control" placeholder="Search for packages" value="{% block search_box %}{%endblock%}">
+              <input name="package_name" type="text" class="form-control" placeholder="Search for packages"
+                     value="{% block search_box %}{%endblock%}">
               <span class="input-group-btn">
                 <button type="submit" class="btn btn-default">
                 <span class="glyphicon glyphicon-search"></span>
