@@ -4,7 +4,7 @@
   $(document).ready(function() {
     $('.datatable').dataTable({
       "order": [[ {{column}}, '{{ order }}' ]],
-      "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, 'All']],
+      "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
       dom:
         "<'dataTables_header'<'dataTables_filter'f><'dataTables_info'i>>" +
         "<'row'<'col-sm-12'tr>>" +
