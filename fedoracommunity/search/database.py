@@ -1,4 +1,5 @@
 import json
+import urllib
 import xapian
 
 
@@ -23,8 +24,15 @@ class Database:
         https://getting-started-with-xapian.readthedocs.io/en/latest/practical_example/searching/building.html
         """
         queryparser = xapian.QueryParser()
-        query = queryparser.parse_query(querystring)
+        queryparser.set_database(self.db)
         enquire = xapian.Enquire(self.db)
+
+        flags = xapian.QueryParser.FLAG_DEFAULT | \
+            xapian.QueryParser.FLAG_PARTIAL | \
+            xapian.QueryParser.FLAG_WILDCARD
+
+        fulltext_querystring = self._fulletxt_search_string(querystring)
+        query = queryparser.parse_query(fulltext_querystring, flags)
         enquire.set_query(query)
         return Query(enquire.get_mset(offset, pagesize))
 
@@ -67,6 +75,30 @@ class Database:
         for char in reserved_chars:
             string = string.replace(char, "_")
         return string
+
+    def _fulletxt_search_string(self, querystring):
+        search_string = urllib.parse.unquote_plus(querystring)
+        search_string = self._filter_search_string(search_string)
+        phrase = '"%s"' % search_string
+
+        # add exact matchs
+        search_terms = search_string.split(' ')
+        search_terms = [t.strip() for t in search_terms if t.strip()]
+        for term in search_terms:
+            search_string += " EX__%s__EX" % term
+
+        # add phrase match
+        search_string += " OR %s" % phrase
+
+        if len(search_terms) > 1:
+            # add near phrase match (phrases that are near each other)
+            search_string += " OR (%s)" % ' NEAR '.join(search_terms)
+
+        # Add partial/wildcard matches
+        search_string += " OR (%s)" % ' OR '.join([
+            "*%s*" % term for term in search_terms])
+
+        return search_string
 
 
 class Query:
