@@ -9,6 +9,7 @@ from ..builds import get_builds
 from ..packages import get_packages, get_package
 from ..bugs import get_bugs
 from ..changelogs import get_changelogs
+from ..contents import get_contents
 from ..datagrepper import get_recent_history
 from ...server import cache
 
@@ -91,8 +92,10 @@ def package_problems(package_name):
 @main_blueprint.route("/packages/<package_name>/contents")
 def package_contents(package_name):
     package = get_package(package_name)
+    contents = get_contents(package_name)
     return render_template("main/package-contents.html",
-                           package=package)
+                           package=package,
+                           contents=contents)
 
 
 @cache.cached(timeout=600)

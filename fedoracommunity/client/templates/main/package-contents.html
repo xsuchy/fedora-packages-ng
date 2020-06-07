@@ -4,9 +4,12 @@
 {% block body_content %}
 <div class="body-content">
   <div>
-    <h1>Contents</h1>
-    <hr><br>
-    <p>Add some content here!</p>
+    <!-- TODO Have a pretty tree view instead -->
+    <div class="list-group">
+      {% for file in contents %}
+        <li class="list-group-item">{{ file }}</li>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}
