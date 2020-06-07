@@ -33,8 +33,40 @@ class Database:
         Search for one result that has the exact match for `querystring`
         and return `Query` object.
         """
-        # @TODO more inteligent search and exact strict matching
-        return self.search(querystring, pagesize=1)
+        search_name = self._filter_search_string(querystring)
+        search_string = "%s EX__%s__EX" % (search_name, search_name)
+
+        matches = self.search(search_string).all()
+        if len(matches) == 0:
+            return None
+
+        # Sometimes (rarely), the first match is not the one we actually want.
+        for match in matches:
+            if match["name"] == querystring:
+                return match
+            if any([sp["name"] == querystring for sp in match["sub_pkgs"]]):
+                return match
+        return None
+
+    def _filter_search_string(self, string):
+        """
+        Replaces xapian reserved characters with underscore, lowercases
+        the string and replaces spelling of certain words/names with more
+        common versions
+
+        Reserved Characters:
+            +, -, ', "
+        """
+        reserved_chars = ["+", "-", "\\", "\""]
+        words_translation = {"d-bus": "dbus", "gtk+": "gtk"}
+
+        string = string.lower()
+        for key, value in words_translation.items():
+            string = string.replace(key, value)
+
+        for char in reserved_chars:
+            string = string.replace(char, "_")
+        return string
 
 
 class Query:

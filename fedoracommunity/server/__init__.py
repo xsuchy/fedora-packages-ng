@@ -13,6 +13,7 @@ from flask_migrate import Migrate
 from flask_cache import Cache
 import humanize
 import markdown
+from .exceptions import FedoraPackagesException
 from ..search.database import Database
 
 # instantiate the extensions
@@ -68,6 +69,10 @@ def page_not_found(error):
 @app.errorhandler(500)
 def server_error_page(error):
     return flask.render_template("errors/500.html"), 500
+
+@app.errorhandler(FedoraPackagesException)
+def handle_fedora_packages_exception(error):
+    return flask.render_template("errors/custom.html", message=str(error)), 500
 
 # shell context for flask cli
 @app.shell_context_processor

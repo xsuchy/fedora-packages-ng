@@ -1,5 +1,6 @@
 from . import xapian_cache as db
 from .models import Package
+from .exceptions import ObjectNotFound
 
 
 def get_packages(querystring):
@@ -9,6 +10,7 @@ def get_packages(querystring):
 
 
 def get_package(package_name):
-    query = db.search_one(package_name)
-    query.model = Package
-    return query.all()[0]
+    package = db.search_one(package_name)
+    if not package:
+        raise ObjectNotFound("Package {0} was not found".format(package_name))
+    return Package(package)
