@@ -20,7 +20,18 @@
         <h3>Recent History</h3>
         <div class="history-cards list-group">
           <div class="overlay"> <div class="message"></div> </div>
-        </div>
+            <ul class="list-group">
+            {% for message in recent_history %}
+              <li class="list-group-item">
+                <a href="{{ message.link }}">
+                  <img src="{{ message.icon }}">
+                </a>
+                <img src="{{ message.user_icon }}">
+                {{ message.subject }}
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
     </div>
 </div>
 </div>

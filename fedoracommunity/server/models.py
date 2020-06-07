@@ -43,3 +43,24 @@ class Owner:
         if self.name.endswith("-maint"):
             return "https://admin.fedoraproject.org/pkgdb/users/packages/{0}".format(self.name)
         return "https://fedoraproject.org/wiki/User:{0}".format(self.name)
+
+
+class DatagrepperMessage:
+    def __init__(self, message_dict):
+        self.message_dict = message_dict
+
+    @property
+    def icon(self):
+        return self.message_dict["icon"]
+
+    @property
+    def user_icon(self):
+        return self.message_dict["secondary_icon"]
+
+    @property
+    def link(self):
+        return self.message_dict["link"]
+
+    @property
+    def subject(self):
+        return self.message_dict["subjective"]

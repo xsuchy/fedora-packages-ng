@@ -141,3 +141,9 @@ img.package-image {
   list-style: square url(/static/images/list_tree_marker.png);
   margin-left: 1.3em;
 }
+
+.history-cards .list-group-item img {
+  height: 25px;
+  width: 25px;
+  margin: 2px auto;
+}

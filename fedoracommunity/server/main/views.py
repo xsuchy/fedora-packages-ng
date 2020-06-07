@@ -9,6 +9,7 @@ from ..builds import get_builds
 from ..packages import get_packages, get_package
 from ..bugs import get_bugs
 from ..changelogs import get_changelogs
+from ..datagrepper import get_recent_history
 from ...server import cache
 
 main_blueprint = Blueprint("main", __name__)
@@ -42,8 +43,10 @@ def packages(package_name=None):
         return home()
     else:
         package = get_package(package_name)
+        recent_history = get_recent_history(package_name)
         return render_template("main/package-overview.html",
-                               package=package)
+                               package=package,
+                               recent_history=recent_history)
 
 
 @cache.cached(timeout=120)
