@@ -23,7 +23,10 @@ def home():
 
 @main_blueprint.route("/", methods=["POST"])
 def home_post():
-    url = "/packages/s/{0}".format(flask.request.form["package_name"])
+    package_name = flask.request.form["package_name"]
+    if not package_name:
+        return home()
+    url = "/packages/s/{0}".format(package_name)
     return flask.redirect(url)
 
 
