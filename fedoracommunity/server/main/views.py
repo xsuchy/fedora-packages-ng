@@ -10,6 +10,7 @@ from ..packages import get_packages, get_package
 from ..bugs import get_bugs
 from ..changelogs import get_changelogs
 from ..contents import get_contents
+from ..problems import get_problems
 from ..datagrepper import get_recent_history
 from ...server import cache
 
@@ -88,8 +89,10 @@ def package_bugs(package_name):
 @main_blueprint.route("/packages/<package_name>/problems")
 def package_problems(package_name):
     package = get_package(package_name)
+    problems = get_problems(package_name)
     return render_template("main/package-problems.html",
-                           package=package)
+                           package=package,
+                           problems=problems)
 
 
 @main_blueprint.route("/packages/<package_name>/contents")
