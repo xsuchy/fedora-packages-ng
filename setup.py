@@ -26,6 +26,19 @@ import koji
 
 from setuptools import setup, find_packages
 
+
+def find_data():
+    here = os.path.dirname(os.path.realpath(__file__))
+    datadir = os.path.join(here, "fedoracommunity/client")
+    data = []
+    for root, dirs, files in os.walk(datadir):
+        for f in files:
+            path = os.path.join(root, f)
+            path = path.replace(here + "/fedoracommunity/", "")
+            data.append(path)
+    return data
+
+
 setup(
     name='fedoracommunity',
     version='5.5.0',
@@ -59,15 +72,8 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=['webtest'],
-    package_data={'fedoracommunity': [
-        'client/*', 
-        'client/templates/*',
-        'client/templates/user/*',
-        'client/templates/errors/*',
-        'client/templates/main/*',
-        'client/static/*',
-        'client/static/images/*',
-        ]},
+    package_data={'fedoracommunity': find_data()},
+
     #entry_points="""
     #[setuptools.file_finders]
     #git = fedoracommunity.lib.utils:find_git_files
