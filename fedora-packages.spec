@@ -74,7 +74,7 @@ cp -a logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %doc README.md setup-with-docker.md setup-without-docker.md
 %license COPYING
 %{_datadir}/%{name}
-
+%{_sysconfdir}/logrotate.d/%{name}
 
 %changelog
 * Wed Oct 30 2019 Miroslav Suchý <msuchy@redhat.com> 5.0.1-1
