@@ -33,6 +33,10 @@ Requires:       xstatic-bootstrap-scss-common
 Requires:       xstatic-datatables-common
 Requires:       xstatic-jquery-ui-common
 Requires:       xstatic-patternfly-common
+# web service
+Recommends:     httpd
+Recommends:     python3-mod_wsgi
+
 Recommends:     logrotate
 
 Provides:       bundled(bootstrap-combobox) = 1.1.6
