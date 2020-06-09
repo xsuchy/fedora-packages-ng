@@ -26,10 +26,6 @@ import koji
 
 from setuptools import setup, find_packages
 
-data_files = [
-    ('fedoracommunity/client', ['fedoracommunity/client/templates', 'fedoracommunity/client/static']),
-]
-
 setup(
     name='fedoracommunity',
     version='5.5.0',
@@ -63,7 +59,6 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=['webtest'],
-    #data_files=data_files,
     package_data={'fedoracommunity': ['client/*', ]},
 
     #entry_points="""
