@@ -62,10 +62,10 @@ packages inside Fedora.
 
 
 %build
-%py3_build
+version=%version %py3_build
 
 %install
-%{py3_install}
+version=%version %{py3_install}
 mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -a application manage.py %{buildroot}%{_datadir}/%{name}
 
