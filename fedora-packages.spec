@@ -64,8 +64,9 @@ packages inside Fedora.
 #nothing to do
 
 %install
-mkdir -p %{buildroot}%{_datadir}/%{name}
-cp -a fedoracommunity manage.py %{buildroot}%{_datadir}/%{name}
+%{py3_install}
+#mkdir -p %{buildroot}%{_datadir}/%{name}
+#cp -a fedoracommunity manage.py %{buildroot}%{_datadir}/%{name}
 
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
 cp -a logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
