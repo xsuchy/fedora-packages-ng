@@ -21,7 +21,10 @@ Requires:       python3
 Requires:       python3-bodhi-client
 Requires:       python3-bugzilla
 Requires:       python3-devel
+Requires:       python3-flask-bootstrap
 Requires:       python3-flask-cache
+Requires:       python3-flask-migrate
+Requires:       python3-flask-sqlalchemy
 Requires:       python3-paste
 Requires:       python3-pdc-client
 Requires:       python3-humanize
