@@ -37,6 +37,10 @@ app_settings = os.getenv(
     "APP_SETTINGS", "fedoracommunity.server.config.ProductionConfig"
 )
 app.config.from_object(app_settings)
+if os.environ.get("FEDORA_PACKAGES_CONFIG"):
+    app.config.from_envvar("FEDORA_PACKAGES_CONFIG")
+else:
+    app.config.from_pyfile("/etc/fedora-packages/fedora-package.conf", silent=True)
 
 if debugtoolbar:
     # set up extensions

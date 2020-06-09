@@ -5,7 +5,7 @@ import sys
 # so that errors are not sent to stdout
 logging.basicConfig(stream=sys.stderr)
 
-from .server import app
+from fedoracommunity.server import app
 
 if app.debug:
     from werkzeug.debug import DebuggedApplication

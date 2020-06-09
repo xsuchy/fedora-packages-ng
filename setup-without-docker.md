@@ -9,9 +9,15 @@ Create and activate a virtual environment, and then install the requirements.
 ### Set Environment Variables
 
 Update *fedoracommunity/server/config.py*, and then run:
+Create config `/some/config.cfg`:
+```
+SECRET_KEY = "my_precious"
+CACHE_PATH = "./index-db-snap-2020-05-14/search"
+FLASK_DEBUG = 0
 
+and run: 
 ```sh
-$ export APP_NAME="fedora-packages"
+$ export FEDORA_PACKAGES_CONFIG=/some/config.cfg
 $ export APP_SETTINGS="fedoracommunity.server.config.ProductionConfig"
 $ export FLASK_DEBUG=0
 ```

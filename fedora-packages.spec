@@ -32,6 +32,7 @@ Requires:       python3-koji
 Requires:       python3-requests
 Requires:       python3-setuptools
 Requires:       python3-markdown
+Requires:       python3-xapian
 Requires:       xstatic-bootstrap-scss-common
 Requires:       xstatic-datatables-common
 Requires:       xstatic-jquery-ui-common
@@ -61,16 +62,18 @@ packages inside Fedora.
 
 
 %build
-#nothing to do
+%py3_build
 
 %install
 %{py3_install}
-#mkdir -p %{buildroot}%{_datadir}/%{name}
-#cp -a fedoracommunity manage.py %{buildroot}%{_datadir}/%{name}
+mkdir -p %{buildroot}%{_datadir}/%{name}
+cp -a application manage.py %{buildroot}%{_datadir}/%{name}
 
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
 cp -a logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
+install -d %{buildroot}%{_sysconfdir}/%{name}
+cp -a fedora-package.conf %{buildroot}%{_sysconfdir}/%{name}/
 
 %post
 /bin/systemctl condrestart httpd.service || :
@@ -81,8 +84,11 @@ cp -a logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %files
 %doc README.md setup-with-docker.md setup-without-docker.md
 %license COPYING
+%{python3_sitelib}/*
 %{_datadir}/%{name}
 %{_sysconfdir}/logrotate.d/%{name}
+%{_bindir}/index-packages
+%config(noreplace) %{_sysconfdir}/%{name}/fedora-package.conf
 
 %changelog
 * Wed Oct 30 2019 Miroslav Suchý <msuchy@redhat.com> 5.0.1-1
