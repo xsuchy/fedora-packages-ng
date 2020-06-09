@@ -59,8 +59,15 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=['webtest'],
-    package_data={'fedoracommunity': ['client/*', ]},
-
+    package_data={'fedoracommunity': [
+        'client/*', 
+        'client/templates/*',
+        'client/templates/user/*',
+        'client/templates/errors/*',
+        'client/templates/main/*',
+        'client/static/*',
+        'client/static/images/*',
+        ]},
     #entry_points="""
     #[setuptools.file_finders]
     #git = fedoracommunity.lib.utils:find_git_files
