@@ -85,6 +85,7 @@ cp -a fedora-package.conf %{buildroot}%{_sysconfdir}/%{name}/
 %doc README.md setup-with-docker.md setup-without-docker.md
 %license COPYING
 %{python3_sitelib}/*
+%exclude %{python3_sitelib}/fedoracommunity/tests
 %{_datadir}/%{name}
 %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/index-packages
