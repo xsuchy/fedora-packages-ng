@@ -15,17 +15,22 @@ RUN dnf -y upgrade \
   libpq-devel \
   python3 \
   python3-bodhi-client \
-  python3-flask-bootstrap \
   python3-bugzilla \
   python3-devel \
+  python3-flask-bootstrap \
+  python3-flask-bootstrap \
   python3-flask-cache \
+  python3-flask-migrate \
+  python3-flask-sqlalchemy \
   python3-humanize \
   python3-koji \
+  python3-markdown \
   python3-paste \
-  python3-pip \
   python3-pdc-client \
+  python3-pip \
   python3-requests \
   python3-setuptools \
+  python3-xapian \
   js-html5shiv \
   js-jquery1 \
   js-respond \
@@ -34,6 +39,7 @@ RUN dnf -y upgrade \
   xstatic-jquery-ui-common \
   xstatic-patternfly-common \
   python3-psycopg2 \
+
   # Development dependencies
   # For netcat (nc) command in entrypoint.sh.
   nmap-ncat \
